@@ -1,0 +1,18 @@
+
+<mat-card *ngIf="teams.length > 0">
+<mat-expansion-panel hideToggle *ngFor="let team of teams" >
+  <mat-expansion-panel-header >
+    <mat-panel-title>
+   {{team.name}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <p>{{team.description}}</p>
+  <mat-action-row>
+    <button mat-button color="primary" >EDITE</button>
+    <button mat-button color="warn" (click)="onDelete(team.id)" >DELETE</button>
+  </mat-action-row>
+</mat-expansion-panel>
+</mat-card>
+
+<p class="info-text mat-body-1" *ngIf="teams.length <= 0">No teams added yet!</p>
+
