@@ -16,7 +16,7 @@ export class TeamsService {
 
   // get teams
   getTeams() {
-    this.http.get<{ message: string, teams: any }>('api/teams')
+    this.http.get<{ message: string, teams: any }>('http://localhost:8080/api/teams')
       .pipe(map((teamData) => {
         return teamData.teams.map(team => {
           return {
@@ -37,7 +37,7 @@ export class TeamsService {
   // add teams
   addTeam(teamName: string, teamdescription: string) {
     const team: Team = { id: null, name: teamName, description: teamdescription };
-    this.http.post<{ message: string, teamId: string }>('api/teams', team)
+    this.http.post<{ message: string, teamId: string }>('http://localhost:8080/api/teams', team)
       .subscribe(responseData => {
         console.log(responseData);
         const teamId = responseData.teamId;
@@ -50,7 +50,7 @@ export class TeamsService {
 
   // delete teams
   deleteTeam(teamId: string) {
-    this.http.delete('api/teams/' + teamId)
+    this.http.delete('http://localhost:8080/api/teams/' + teamId)
     .subscribe(()=> {
       const updatedTeams = this.teams.filter(team => team.id !==  teamId);
       this.teams = updatedTeams;

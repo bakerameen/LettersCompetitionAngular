@@ -20,6 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -31,6 +33,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     TeamsComponent,
     TeamCreateComponent,
     TeamListComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
