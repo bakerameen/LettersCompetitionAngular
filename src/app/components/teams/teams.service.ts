@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Team } from './teams.model';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { stringify } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class TeamsService {
   private teams: Team[] = [];
   private teamsUpdated = new Subject<Team[]>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   // get teams
   getTeams() {
@@ -32,7 +34,11 @@ export class TeamsService {
       });
   }
 
+  // get single team - Edit
+  getTeam(teamId: string) {
+    return this.http.get<{ _id: string, name: string, description: string }>('http://localhost:8080/api/teams/' + teamId);
 
+  }
 
   // add teams
   addTeam(teamName: string, teamdescription: string) {
@@ -51,12 +57,27 @@ export class TeamsService {
   // delete teams
   deleteTeam(teamId: string) {
     this.http.delete('http://localhost:8080/api/teams/' + teamId)
-    .subscribe(()=> {
-      const updatedTeams = this.teams.filter(team => team.id !==  teamId);
-      this.teams = updatedTeams;
-      this.teamsUpdated.next([...this.teams]);
-    })
-    ;
+      .subscribe(() => {
+        const updatedTeams = this.teams.filter(team => team.id !== teamId);
+        this.teams = updatedTeams;
+        this.teamsUpdated.next([...this.teams]);
+      })
+      ;
+  }
+
+  // update team
+  updateTeam(teamId: string, name: string, description: string) {
+    const team = { id: teamId, name: name, description: description };
+    this.http.put('http://localhost:8080/api/teams/' + teamId, team)
+      .subscribe(response => {
+        const updatedTeam = [...this.teams];
+        const oldTeamIndex = updatedTeam.findIndex(p => p.id === team.id);
+        updatedTeam[oldTeamIndex] = team;
+        this.teams = updatedTeam;
+        this.teamsUpdated.next([...this.teams]);
+        this.router.navigate(["/teams"]);
+      })
+      ;
   }
 
   //  asObservable

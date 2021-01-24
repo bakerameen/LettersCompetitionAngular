@@ -1,3 +1,5 @@
+<!-- Reactive Form-->
+
 <mat-card>
 
   <mat-card-header>
@@ -6,11 +8,52 @@
   </mat-card-header>
 
   <mat-card-content>
-<form (submit)="onAddTeams(teamForm)" #teamForm="ngForm">
+    <form [formGroup]="form" (ngSubmit)="onSaveTeams()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Team Name </mat-label>
+        <input type="text" matInput placeholder="Ex. Proffessional Service" formControlName="name" required>
+        <mat-error *ngIf="form.get('name').invalid">Please enter a valid name</mat-error>
+      </mat-form-field>
+
+      <!-- <div class="example-button-container">
+        <button type="button" mat-stroked-button (click)="filePicker.click()">Upload Logo</button>
+        <input type="file" #filePicker (change)="onImagePicked($event)">
+      </div> -->
+
+      <!-- <div class="img-preview" *ngIf="imagePreview !=='' && imagePreview !== null">
+        <img [src]="imagePreview" [alt]="form.value.name">
+      </div> -->
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <textarea rows="3" matInput placeholder="Ex. The nominee to win the prize..."
+          formControlName="teamDescription"></textarea>
+      </mat-form-field>
+
+      <div class="example-button-container">
+        <button type="submit" mat-raised-button color="accent">Save Team</button>
+      </div>
+    </form>
+
+  </mat-card-content>
+
+</mat-card>
+
+
+<!-- Template Form Start
+<mat-card>
+
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>Create Team</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+<form (submit)="onSaveTeams(teamForm)" #teamForm="ngForm">
     <mat-form-field class="example-full-width">
       <mat-label>Team Name</mat-label>
       <input matInput placeholder="Ex. Proffessional Service" value=""
-             ngModel
+             [ngModel]="team?.name"
              name="teamName"
              required
              #name="ngModel"
@@ -18,19 +61,26 @@
       <mat-error *ngIf="name.invalid">Please enter team name</mat-error>
     </mat-form-field>
 
+    <div class="example-button-container">
+      <button type="button" mat-stroked-button (click)="filePicker.click()" >Upload Logo</button>
+      <input type="file" #filePicker>
+    </div>
+
+
     <mat-form-field class="example-full-width">
       <mat-label>Description</mat-label>
       <textarea rows="3" matInput placeholder="Ex. The nominee to win the prize..."
-           ngModel
+           [ngModel]="team?.description"
            name="teamDescription"
       ></textarea>
     </mat-form-field>
 
-    <div>
-      <button type="submit" mat-raised-button color="accent">Create</button>
+    <div class="example-button-container">
+      <button type="submit" mat-raised-button color="accent">Save Team</button>
     </div>
   </form>
 
   </mat-card-content>
 
 </mat-card>
+-->

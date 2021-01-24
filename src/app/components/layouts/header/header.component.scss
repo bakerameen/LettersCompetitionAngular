@@ -1,4 +1,5 @@
 ul {
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -6,13 +7,10 @@ ul {
 
 a {
   text-decoration: none;
-  color: white;
+
 }
 
 .spacer {
   flex: 1 1 auto
 }
 
-.ulLinks {
-  display: inline;
-}
