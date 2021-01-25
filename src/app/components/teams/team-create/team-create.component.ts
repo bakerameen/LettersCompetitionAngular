@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../auth/auth.service';
 import { Team } from '../teams.model';
 import { TeamsService } from '../teams.service';
 
@@ -9,7 +11,8 @@ import { TeamsService } from '../teams.service';
   templateUrl: './team-create.component.html',
   styleUrls: ['./team-create.component.scss']
 })
-export class TeamCreateComponent implements OnInit {
+export class TeamCreateComponent implements OnInit, OnDestroy {
+  isLodaing = false;
   value = 'Clear me';
   name = '';
   teamDescription = '';
@@ -18,10 +21,16 @@ export class TeamCreateComponent implements OnInit {
   private teamId;
   team: Team;
   form: FormGroup;
+  private authStatusSub: Subscription;
 
-  constructor(public teamservice: TeamsService, public router: ActivatedRoute) { }
+  constructor(public teamservice: TeamsService, public router: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authStatusSub = this.authService.geAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLodaing = false;
+      }
+    );
     this.form = new FormGroup({
       name: new FormControl(null, { validators: [Validators.minLength(3)]
       }),
@@ -71,6 +80,10 @@ export class TeamCreateComponent implements OnInit {
     }
 
     this.form.reset();
+  }
+
+  ngOnDestroy(){
+    this.authStatusSub.unsubscribe();
   }
 
 }

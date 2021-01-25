@@ -17,6 +17,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup/signup.component';
 import { AuthIntercepter } from './components/auth/auth-intercepter';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './components/error/error.component';
 
 // Material
 import {MatInputModule} from '@angular/material/input';
@@ -25,9 +27,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
-
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 
 
@@ -43,6 +47,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +63,16 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
+    MatDialogModule,
     AppRoutingModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true}
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
+  // entryComponents This inform Angular to run it even don't see it
+
 })
 export class AppModule { }
