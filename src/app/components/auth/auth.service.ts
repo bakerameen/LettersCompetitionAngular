@@ -45,7 +45,6 @@ export class AuthService {
       this.token = autInformation.token;
       this.isAuthenticated = true;
       this.userId = autInformation.userId;
-      this.userName = autInformation.userName;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }
@@ -69,12 +68,12 @@ export class AuthService {
   }
 
 
-  private saveAuthData(token: string, expirationDate: Date, userId: string, userName: string) {
+  private saveAuthData(token: string, expirationDate: Date, userId: string) {
     // localstorage api we can access
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
-    localStorage.setItem('userName', userName);
+
   }
 
   private clearAuthdata() {
@@ -104,7 +103,7 @@ export class AuthService {
 
   createUser(email: string, password: string, name: string) {
     const authData: AuthData = { email: email, password: password, name: name };
-    this.http.post('http://localhost:8080/api/user/signup', authData)
+    this.http.post('/api/user/signup', authData)
       .subscribe(response => {
         this.router.navigate(["/"]);
       }, error => {
@@ -114,7 +113,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     const authData: AuthData = { email: email, password: password, name: null }
-    this.http.post<{ token: string, expiresIn: number, userID: string,  name: string }>('http://localhost:8080/api/user/login', authData).subscribe(response => {
+    this.http.post<{ token: string, expiresIn: number, userID: string,  name: string }>('/api/user/login', authData).subscribe(response => {
       const token = response.token;
       this.token = token;
       if (token) {
@@ -126,7 +125,7 @@ export class AuthService {
         this.authStatusListener.next(true);
         const now = new Date;
         const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-        this.saveAuthData(token, expirationDate, this.userId, this.userName);
+        this.saveAuthData(token, expirationDate, this.userId);
         this.router.navigate(["/teams"]);
       }
 
@@ -141,7 +140,6 @@ export class AuthService {
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.userId = null;
-    this.userName = null;
     this.clearAuthdata();
     this.router.navigate(["/"]);
   }
@@ -152,7 +150,7 @@ export class AuthService {
   }
 
   getPlayers() {
-    this.http.get<{ message: string, users: any }>('http://localhost:8080/api/user/users').subscribe((players) => {
+    this.http.get<{ message: string, users: any }>('/api/user/users').subscribe((players) => {
       const playersArray = players.users;
       this.playersNew = playersArray;
       this.playersUpdated.next([...this.playersNew]);
@@ -160,9 +158,9 @@ export class AuthService {
   }
 
   getUserClickedCredential() {
-    // const clickedInformation = this.getAuthData();
-    // return clickedInformation;
-    return this.getUserName();
+    return this.userName ;
 }
+
+
 
 }
