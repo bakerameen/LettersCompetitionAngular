@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
+import { MatchService } from '../../match/match.service';
 import { Team } from '../teams.model';
 import { TeamsService } from '../teams.service';
 
@@ -20,7 +21,7 @@ export class TeamListComponent implements OnInit, OnDestroy {
   teamPerPage = 5;
   pageSizeOptions = [1, 2 , 5, 10];
 
-  constructor(public teamservice: TeamsService, private authService: AuthService) { }
+  constructor(public teamservice: TeamsService, private authService: AuthService, private matcService: MatchService) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -29,12 +30,19 @@ export class TeamListComponent implements OnInit, OnDestroy {
       .subscribe((teams: Team[]) => {
         this.isLoading = false;
         this.teams = teams;
+        console.log('baer' + JSON.stringify(teams));
       });
       this.userIsAuthenticated = this.authService.getIsAuth();
       this.authListenerSub = this.authService.geAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
+
   }
+
+  onAddMatch(team) {
+      this.matcService.addMatch(team.id, team.name, team.description, team.fPlayer, team.sPlayer, team.score);
+  }
+
 
   onDelete(team) {
     this.teamservice.deleteTeam(team);

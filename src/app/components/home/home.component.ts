@@ -9,12 +9,14 @@ import { AuthService } from '../auth/auth.service';
 export class HomeComponent implements OnInit {
 
   userId: string;
-
+ userName : string;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.userId = this.authService.getuserId();
     console.log(this.userId);
+this.userName = this.authService.getUserName();
+console.log(this.userName)
   }
 
 }

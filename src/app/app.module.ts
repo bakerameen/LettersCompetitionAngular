@@ -19,6 +19,9 @@ import { SignupComponent } from './components/auth/signup/signup/signup.componen
 import { AuthIntercepter } from './components/auth/auth-intercepter';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './components/error/error.component';
+import { TeamJoinComponent } from './components/teams/team-join/team-join.component';
+import { MatchComponent } from './components/match/match.component';
+import { DialogUserInformationComponent } from './components/match/dialog-user-information/dialog-user-information.component';
 
 // Material
 import {MatInputModule} from '@angular/material/input';
@@ -30,6 +33,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 
 
@@ -47,7 +53,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    ErrorComponent
+    ErrorComponent,
+    TeamJoinComponent,
+    MatchComponent,
+    DialogUserInformationComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,6 +74,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatSelectModule,
     AppRoutingModule
   ],
   providers: [
@@ -71,7 +82,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent]
+  entryComponents: [ErrorComponent, DialogUserInformationComponent]
   // entryComponents This inform Angular to run it even don't see it
 
 })
