@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input, Output , EventEmitter} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Match } from './match.model';
@@ -12,6 +12,14 @@ import { DialogUserInformationComponent } from './dialog-user-information/dialog
   styleUrls: ['./match.component.scss']
 })
 export class MatchComponent implements OnInit, OnDestroy {
+
+
+  @Input()
+  count: number = 0;
+
+  @Output()
+  change: EventEmitter<number> = new EventEmitter<number>();
+
 
   matches: Match[] = [];
   subMatch: Subscription;
@@ -31,6 +39,7 @@ export class MatchComponent implements OnInit, OnDestroy {
 
   onHandRaised() {
     this.user = this.authService.getUserClickedCredential();
+    console.log(this.user);
     this.playerClicked = true;
     let dialogRef = this.dialog.open(DialogUserInformationComponent, {data : {name: this.user }});
 
@@ -51,5 +60,20 @@ export class MatchComponent implements OnInit, OnDestroy {
 
     this.subMatch.unsubscribe();
   }
+
+
+
+
+  increment() {
+    this.count++;
+    this.change.emit(this.count);
+  }
+
+  decrement() {
+    this.count--;
+    this.change.emit(this.count);
+  }
+
+
 
 }

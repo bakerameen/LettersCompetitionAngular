@@ -14,6 +14,7 @@ export class AuthService {
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private playersUpdated = new Subject<AuthData[]>();
+  private userCredential = new Subject<any>();
   private tokenTimer: any;
   private userId: string;
   private userName: string;
@@ -159,6 +160,7 @@ export class AuthService {
 
   getUserClickedCredential() {
     return this.userName ;
+
 }
 
 

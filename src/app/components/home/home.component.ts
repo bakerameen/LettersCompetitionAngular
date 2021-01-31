@@ -8,10 +8,15 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  myCount: number = 10;
+  countChange(event) {
+    this.myCount = event;
   }
 
 }

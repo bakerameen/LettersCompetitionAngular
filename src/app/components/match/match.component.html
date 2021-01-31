@@ -1,10 +1,23 @@
 
-<div *ngFor="let match of matches | slice:0:2; let i=index">
+<!-- <div *ngFor="let match of matches | slice:0:2; let i=index">
   <br>
   <h1>{{match.teamName}}</h1>
   <br>
   {{match.fPlayer}} -   {{match.sPlayer}}
+
   </div>
 
-  <button may-mat-raised-button (click)="onHandRaised()" [disabled]="playerClicked">Click to Answer</button>
 
+
+  <button may-mat-raised-button (click)="onHandRaised()" [disabled]="playerClicked">Click to Answer</button> -->
+
+
+  <div class="counter">
+    <button (click)="decrement()">
+      Decrement
+    </button>
+    <input type="text" [value]="count">
+    <button (click)="increment()">
+      Increment
+    </button>
+  </div>

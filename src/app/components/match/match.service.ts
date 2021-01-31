@@ -1,25 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+
 import { Match } from '../match/match.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatchService {
 
+  // private url: string = 'http://localhost:8080/';
   private match: Match[] = [];
   private matchUpadted = new Subject<Match[]>();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
+
+
+
+
 
 // get matches
 getMatches() {
    this.http.get<{message: string, matches: any}>('/api/match/')
    .pipe(map(matchdata => {
-     console.log(matchdata);
+     console.log(matchdata)
      return matchdata.matches.map(matchResponse => {
        return {
        id: matchResponse._id,
