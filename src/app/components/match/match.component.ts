@@ -19,10 +19,14 @@ export class MatchComponent implements OnInit, OnDestroy {
   subMatch: Subscription;
   users : Answer[] = [];
   answerSub : Subscription;
+  date: Date;
+  dataRefresher: any;
 
   constructor(private matchService: MatchService, private authService: AuthService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.refreshData();
+    const currentDate = new Date();
     this.matchService.getMatches();
     this.subMatch = this.matchService.getMatchUpdateListener().subscribe(response => {
       this.matches = response;
@@ -31,24 +35,39 @@ export class MatchComponent implements OnInit, OnDestroy {
     this.authService.getUserClickedCredential();
     this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
       this.users = Response;
+      this.date = currentDate;
     })
 
 
 
   }
 
-  onClickedCredentialByAdmin() {
+  // onClickedinfoByAdmin() {
+  //   const currentDate = new Date();
+  //   this.authService.getUserClickedCredential();
+  //   this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
+  //     this.users = Response;
+  //     this.date = currentDate;
+  //   })
+  // }
+
+  onReleasedClickedByAdmin() {
     this.authService.updateUserClickedCredentialByAdmin();
    // this.clickStatus = false;
+   this.date = null;
   }
   onHandRaised() {
-
+    const currentDate = new Date();
   //  this.authService.addUserClickedCredential();
  this.authService.updateUserClickedCredential();
  this.authService.getUserClickedCredential();
  this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
    this.users = Response;
- })
+   this.date = currentDate;
+ });
+
+
+
   // this.clickStatus = true;
 
     // console.log(this.user);
@@ -67,10 +86,28 @@ export class MatchComponent implements OnInit, OnDestroy {
   }
 
 
+  refreshData(){
+    const currentDate = new Date();
+    this.dataRefresher =
+      setInterval(() => {
+        this.authService.getUserClickedCredential();
+    this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
+      this.users = Response;
+      this.date = currentDate;
+    })
+
+      }, 5000);
+  }
+
 
   ngOnDestroy() {
 
     this.subMatch.unsubscribe();
+
+    if(this.dataRefresher){
+      clearInterval(this.dataRefresher);
+  }
+
   }
 
 }

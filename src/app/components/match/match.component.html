@@ -12,9 +12,16 @@
 <div>
   <button mat-raised-button  (click)="onHandRaised()" >Click to Answer</button>
 </div>
-<div>
-  <button mat-raised-button (click)="onClickedCredentialByAdmin()">Admin Realease clicked</button>
-</div>
 
 <br>
-<div *ngFor="let user of users">Hand raised by <b>{{user.userName}}</b></div>
+
+<div *ngFor="let user of users">Hand raised by <b> - {{user.userName}} -</b> {{date}}</div>
+
+<br><br>
+<div>
+  <button mat-raised-button (click)="onReleasedClickedByAdmin()">Admin Realease clicked</button>
+</div>
+
+<!-- <div>
+  <button mat-raised-button (click)="onClickedinfoByAdmin()">Admin get Clicked info</button>
+</div> -->

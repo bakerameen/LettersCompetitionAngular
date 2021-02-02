@@ -191,7 +191,6 @@ getUserClickedCredential(){
    this.http.get<{message: string, answer: any}>('http://localhost:8080/api/answer').subscribe( response => {
      this.answer = response.answer;
      this.answerUpdate.next([...this.answer]);
-      console.log(this.answer);
    });
 }
 
