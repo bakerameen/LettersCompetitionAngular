@@ -12,11 +12,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
 
-  myCount: number = 10;
-  countChange(event) {
-    this.myCount = event;
   }
 
 }

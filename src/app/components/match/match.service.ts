@@ -24,7 +24,7 @@ export class MatchService {
 
 // get matches
 getMatches() {
-   this.http.get<{message: string, matches: any}>('/api/match/')
+   this.http.get<{message: string, matches: any}>('http://localhost:8080/api/match/')
    .pipe(map(matchdata => {
      console.log(matchdata)
      return matchdata.matches.map(matchResponse => {
@@ -50,7 +50,7 @@ getMatches() {
   addMatch(teamId: string, teamName: string, teamdescription: string, fPlayer: string, sPlayer: string, score: string) {
     const match: Match = { id: null, teamId: teamId, teamName: teamName, description: teamdescription, fPlayer: fPlayer, sPlayer: sPlayer, score: score };
 
-     this.http.post<{ message: string, matchId: string }>('/api/match/', match)
+     this.http.post<{ message: string, matchId: string }>('http://localhost:8080/api/match/', match)
        .subscribe(responseData => {
 
         const matchId = responseData.matchId;

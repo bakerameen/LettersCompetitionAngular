@@ -20,7 +20,7 @@ export class TeamsService {
 
   // get teams
   getTeams() {
-    this.http.get<{ message: string, teams: any }>('/api/teams')
+    this.http.get<{ message: string, teams: any }>('http://localhost:8080/api/teams')
       .pipe(map((teamData) => {
         console.log(teamData);
         return teamData.teams.map(team => {
@@ -38,22 +38,21 @@ export class TeamsService {
         console.log(responseData);
         this.teams = responseData;
         this.teamsUpdated.next([...this.teams]);
-        console.log(this.teams);
+
       });
   }
 
   // get single team - Edit
   getTeam(teamId: string) {
-    return this.http.get<{ _id: string, name: string, description: string, fPlayer: string, sPlayer: string, score: string }>('/api/teams/' + teamId);
+    return this.http.get<{ _id: string, name: string, description: string, fPlayer: string, sPlayer: string, score: string }>('http://localhost:8080/api/teams/' + teamId);
 
   }
 
   // add teams
   addTeam(teamName: string, teamdescription: string) {
     const team: Team = { id: null, name: teamName, description: teamdescription, fPlayer: null, sPlayer: null, score: null };
-    this.http.post<{ message: string, teamId: string }>('/api/teams', team)
+    this.http.post<{ message: string, teamId: string }>('http://localhost:8080/api/teams', team)
       .subscribe(responseData => {
-        console.log(responseData);
         const teamId = responseData.teamId;
         team.id = teamId;
         this.teams.push(team);
@@ -64,7 +63,7 @@ export class TeamsService {
 
   // delete teams
   deleteTeam(teamId: string) {
-    this.http.delete('/api/teams/' + teamId)
+    this.http.delete('http://localhost:8080/api/teams/' + teamId)
       .subscribe(() => {
         const updatedTeams = this.teams.filter(team => team.id !== teamId);
         this.teams = updatedTeams;
@@ -76,7 +75,7 @@ export class TeamsService {
   // update team
   updateTeam(teamId: string, name: string, description: string) {
     const team = { id: teamId, name: name, description: description, fPlayer: null, sPlayer: null, score: null };
-    this.http.put('/api/teams/' + teamId, team)
+    this.http.put('http://localhost:8080/api/teams/' + teamId, team)
       .subscribe(response => {
         const updatedTeam = [...this.teams];
         const oldTeamIndex = updatedTeam.findIndex(p => p.id === team.id);
@@ -94,7 +93,7 @@ export class TeamsService {
   addPlayers(teamId: string, name: string, description: string, firstPlayer: string, secondPlayer: string, score: string,) {
     const team = { id: teamId, name: name, description: description, fPlayer: firstPlayer, sPlayer: secondPlayer, score: score };
 
-    this.http.put("/api/teams/players/" + teamId, team).subscribe(response => {
+    this.http.put("http://localhost:8080/api/teams/players/" + teamId, team).subscribe(response => {
       const updatedTeam = [...this.teams];
       const oldTeamIndex = updatedTeam.findIndex(p => p.id === team.id);
       updatedTeam[oldTeamIndex] = team;

@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit, Input, Output , EventEmitter} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Match } from './match.model';
 import { MatchService } from './match.service';
 import { MatDialog } from "@angular/material/dialog";
 import { DialogUserInformationComponent } from './dialog-user-information/dialog-user-information.component';
+import { Answer } from './answer.model';
 
 @Component({
   selector: 'app-match',
@@ -14,17 +15,10 @@ import { DialogUserInformationComponent } from './dialog-user-information/dialog
 export class MatchComponent implements OnInit, OnDestroy {
 
 
-  @Input()
-  count: number = 0;
-
-  @Output()
-  change: EventEmitter<number> = new EventEmitter<number>();
-
-
   matches: Match[] = [];
   subMatch: Subscription;
-  user: string;
-  playerClicked = false;
+  users : Answer[] = [];
+  answerSub : Subscription;
 
   constructor(private matchService: MatchService, private authService: AuthService, public dialog: MatDialog) { }
 
@@ -32,25 +26,43 @@ export class MatchComponent implements OnInit, OnDestroy {
     this.matchService.getMatches();
     this.subMatch = this.matchService.getMatchUpdateListener().subscribe(response => {
       this.matches = response;
-      console.log(this.matches)
     });
+
+    this.authService.getUserClickedCredential();
+    this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
+      this.users = Response;
+    })
+
+
 
   }
 
+  onClickedCredentialByAdmin() {
+    this.authService.updateUserClickedCredentialByAdmin();
+   // this.clickStatus = false;
+  }
   onHandRaised() {
-    this.user = this.authService.getUserClickedCredential();
-    console.log(this.user);
-    this.playerClicked = true;
-    let dialogRef = this.dialog.open(DialogUserInformationComponent, {data : {name: this.user }});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      if (result === true) {
-        this.playerClicked = false;
-      } else {
-        this.playerClicked = true;
-      }
-    });
+  //  this.authService.addUserClickedCredential();
+ this.authService.updateUserClickedCredential();
+ this.authService.getUserClickedCredential();
+ this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
+   this.users = Response;
+ })
+  // this.clickStatus = true;
+
+    // console.log(this.user);
+    // this.playerClicked = true;
+    // let dialogRef = this.dialog.open(DialogUserInformationComponent, {data : {name: this.user }});
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    //   if (result === true) {
+    //     this.playerClicked = false;
+    //   } else {
+    //     this.playerClicked = true;
+    //   }
+    // });
 
   }
 
@@ -60,20 +72,5 @@ export class MatchComponent implements OnInit, OnDestroy {
 
     this.subMatch.unsubscribe();
   }
-
-
-
-
-  increment() {
-    this.count++;
-    this.change.emit(this.count);
-  }
-
-  decrement() {
-    this.count--;
-    this.change.emit(this.count);
-  }
-
-
 
 }
