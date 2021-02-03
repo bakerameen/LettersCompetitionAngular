@@ -4,5 +4,5 @@ name: string;
 description: string;
 fPlayer: string;
 sPlayer: string;
-score: string
+score: any;
 }

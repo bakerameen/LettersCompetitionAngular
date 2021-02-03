@@ -50,7 +50,7 @@ export class TeamsService {
 
   // add teams
   addTeam(teamName: string, teamdescription: string) {
-    const team: Team = { id: null, name: teamName, description: teamdescription, fPlayer: null, sPlayer: null, score: null };
+    const team: Team = { id: null, name: teamName, description: teamdescription, fPlayer: null, sPlayer: null, score: 0 };
     this.http.post<{ message: string, teamId: string }>('http://localhost:8080/api/teams', team)
       .subscribe(responseData => {
         const teamId = responseData.teamId;
@@ -90,7 +90,7 @@ export class TeamsService {
 
   // add players on team
 
-  addPlayers(teamId: string, name: string, description: string, firstPlayer: string, secondPlayer: string, score: string,) {
+  addPlayers(teamId: string, name: string, description: string, firstPlayer: string, secondPlayer: string, score: number) {
     const team = { id: teamId, name: name, description: description, fPlayer: firstPlayer, sPlayer: secondPlayer, score: score };
 
     this.http.put("http://localhost:8080/api/teams/players/" + teamId, team).subscribe(response => {

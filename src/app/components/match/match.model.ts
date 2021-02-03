@@ -5,5 +5,5 @@ export interface Match {
   description: string;
   fPlayer: string;
   sPlayer: string;
-  score: string
+  score: number
   }

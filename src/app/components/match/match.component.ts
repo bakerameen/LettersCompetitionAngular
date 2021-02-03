@@ -21,6 +21,7 @@ export class MatchComponent implements OnInit, OnDestroy {
   answerSub : Subscription;
   date: Date;
   dataRefresher: any;
+  scoreVal = "0";
 
   constructor(private matchService: MatchService, private authService: AuthService, public dialog: MatDialog) { }
 
@@ -37,10 +38,9 @@ export class MatchComponent implements OnInit, OnDestroy {
       this.users = Response;
       this.date = currentDate;
     })
-
-
-
   }
+
+
 
   // onClickedinfoByAdmin() {
   //   const currentDate = new Date();
@@ -50,6 +50,10 @@ export class MatchComponent implements OnInit, OnDestroy {
   //     this.date = currentDate;
   //   })
   // }
+
+  updateScore(matchId, scoreVal) {
+    this.matchService.updateMatch(matchId, scoreVal);
+  }
 
   onReleasedClickedByAdmin() {
     this.authService.updateUserClickedCredentialByAdmin();
@@ -94,6 +98,7 @@ export class MatchComponent implements OnInit, OnDestroy {
     this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
       this.users = Response;
       this.date = currentDate;
+
     })
 
       }, 5000);

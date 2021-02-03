@@ -47,7 +47,7 @@ getMatches() {
 
 
   // add match
-  addMatch(teamId: string, teamName: string, teamdescription: string, fPlayer: string, sPlayer: string, score: string) {
+  addMatch(teamId: string, teamName: string, teamdescription: string, fPlayer: string, sPlayer: string, score: number) {
     const match: Match = { id: null, teamId: teamId, teamName: teamName, description: teamdescription, fPlayer: fPlayer, sPlayer: sPlayer, score: score };
 
      this.http.post<{ message: string, matchId: string }>('http://localhost:8080/api/match/', match)
@@ -61,6 +61,12 @@ getMatches() {
   }
 
 
+  updateMatch(matchId, scoreVal) {
+    const teamUpdate = {matchId: matchId, score: scoreVal};
+this.http.put('http://localhost:8080/api/match/' + matchId, teamUpdate).subscribe(Response => {
+  console.log(Response);
+})
+  }
 
   getMatchUpdateListener() {
     return this.matchUpadted.asObservable();

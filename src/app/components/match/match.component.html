@@ -2,9 +2,18 @@
  <div *ngFor="let match of matches | slice:0:2; let i=index">
   <br>
   <h1>{{match.teamName}}</h1>
+  <h2>{{match.score}}</h2>
+  <h3>{{match.id}}</h3>
   <br>
   {{match.fPlayer}} -   {{match.sPlayer}}
+  <br>
+  {{match.score}}
+  <br>
+  <input [(ngModel)]="scoreVal">
 
+
+
+  <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update</button>
   </div>
 
 
