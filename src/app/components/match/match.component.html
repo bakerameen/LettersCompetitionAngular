@@ -1,5 +1,61 @@
+<div style="margin: 10px;">
+  <a (click)="onLogout()"><button mat-button color="accent">Logout</button></a>
+</div>
 
- <div *ngFor="let match of matches | slice:0:2; let i=index">
+<div class = "centered">
+</div>
+<div class = "notification active">
+	<div class = "text" *ngFor="let user of users">
+    <b>{{user.userName}}</b>
+    <!-- Hand raised by <b> -  -</b> {{date}} -->
+
+	</div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row" >
+<div class="col-xl-6 col-lg-6 col-sm-12" *ngFor="let match of matches | slice:0:2; let i=index">
+  <div class="card">
+    <div class="card-header">
+      {{match.teamName}}
+      <span matBadge="{{match.score}}" matBadgeSize="large" matBadgeColor="accent"></span>
+
+
+
+    </div>
+    <div class="card-body">
+      <p class="card-text">  {{match.fPlayer}} -   {{match.sPlayer}}</p>
+      <button [disabled]="btnClicked" (click)="onHandRaised()" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>pan_tool</mat-icon>
+      </button>
+
+
+      <!-- <input [(ngModel)]="scoreVal">
+      <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update score</button> -->
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+<br><br><br><br><br>
+<!-- ngIf Admin-->
+<div class="card">
+  <div class="card-header">
+    Admin Actions
+  </div>
+  <div class="card-body">
+      <button mat-raised-button (click)="onReleasedClickedByAdmin()">Put Hand Down</button>
+      <!-- <button mat-raised-button (click)=stopClickListenerTimer() >stop click listener timer</button> -->
+    </div>
+</div>
+
+
+
+
+
+ <!-- <div *ngFor="let match of matches | slice:0:2; let i=index">
   <br>
   <h1>{{match.teamName}}</h1>
   <h2>{{match.score}}</h2>
@@ -13,13 +69,13 @@
 
 
 
-  <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update</button>
+  <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update score</button>
   </div>
 
 
 
 <div>
-  <button mat-raised-button  (click)="onHandRaised()" >Click to Answer</button>
+  <button mat-raised-button  (click)="onHandRaised()" >Raise Your Hand</button>
 </div>
 
 <br>
@@ -31,6 +87,11 @@
   <button mat-raised-button (click)="onReleasedClickedByAdmin()">Admin Realease clicked</button>
 </div>
 
-<!-- <div>
+
+<br><br><br><br>
+<div>
+  <button (click)=stopClickListenerTimer() >stop click listener timer</button>
+</div>
+<div>
   <button mat-raised-button (click)="onClickedinfoByAdmin()">Admin get Clicked info</button>
 </div> -->

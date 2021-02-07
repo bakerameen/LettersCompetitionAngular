@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Match } from './match.model';
 import { MatchService } from './match.service';
 import { MatDialog } from "@angular/material/dialog";
 import { DialogUserInformationComponent } from './dialog-user-information/dialog-user-information.component';
 import { Answer } from './answer.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-match',
@@ -17,15 +18,18 @@ export class MatchComponent implements OnInit, OnDestroy {
 
   matches: Match[] = [];
   subMatch: Subscription;
-  users : Answer[] = [];
-  answerSub : Subscription;
+  users: Answer[] = [];
+  answerSub: Subscription;
   date: Date;
   dataRefresher: any;
-  scoreVal = "0";
+  isShowTimer = true;
+  scoreVal = 0;
+  btnClicked = false;
 
-  constructor(private matchService: MatchService, private authService: AuthService, public dialog: MatDialog) { }
+  constructor(private matchService: MatchService, private authService: AuthService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+
     this.refreshData();
     const currentDate = new Date();
     this.matchService.getMatches();
@@ -34,13 +38,17 @@ export class MatchComponent implements OnInit, OnDestroy {
     });
 
     this.authService.getUserClickedCredential();
-    this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
+    this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
       this.users = Response;
       this.date = currentDate;
     })
   }
 
 
+  // stopClickListenerTimer() {
+  //   this.isShowTimer = !this.isShowTimer;
+
+  // }
 
   // onClickedinfoByAdmin() {
   //   const currentDate = new Date();
@@ -55,24 +63,22 @@ export class MatchComponent implements OnInit, OnDestroy {
     this.matchService.updateMatch(matchId, scoreVal);
   }
 
-  onReleasedClickedByAdmin() {
-    this.authService.updateUserClickedCredentialByAdmin();
-   // this.clickStatus = false;
-   this.date = null;
-  }
+
   onHandRaised() {
+    this.btnClicked = true;
     const currentDate = new Date();
-  //  this.authService.addUserClickedCredential();
- this.authService.updateUserClickedCredential();
- this.authService.getUserClickedCredential();
- this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
-   this.users = Response;
-   this.date = currentDate;
- });
+    //  this.authService.addUserClickedCredential();
+    this.authService.updateUserClickedCredential();
+    this.authService.getUserClickedCredential();
+    this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
+
+      this.users = Response;
+      this.date = currentDate;
+    });
 
 
 
-  // this.clickStatus = true;
+    // this.clickStatus = true;
 
     // console.log(this.user);
     // this.playerClicked = true;
@@ -90,28 +96,66 @@ export class MatchComponent implements OnInit, OnDestroy {
   }
 
 
-  refreshData(){
+  onReleasedClickedByAdmin() {
+
+    this.authService.updateUserClickedCredentialByAdmin();
+    // this.clickStatus = false;
+    this.date = null;
+    this.isShowTimer = !this.isShowTimer;
+    this.btnClicked = false;
+
+  }
+
+
+  refreshData() {
+
     const currentDate = new Date();
-    this.dataRefresher =
-      setInterval(() => {
-        this.authService.getUserClickedCredential();
-    this.answerSub = this.authService.getAnswerUpdateListener().subscribe( Response => {
-      this.users = Response;
-      this.date = currentDate;
+    if (this.isShowTimer === true) {
+      this.dataRefresher =
+        setInterval(() => {
+          this.authService.getUserClickedCredential();
+          this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
+            this.users = Response;
+            this.date = currentDate;
 
-    })
 
-      }, 5000);
+
+            //  this._snackBar.open('Hand raised by ', 'Baqer', {
+            //     duration: 5000,
+            //   });
+
+          });
+
+        }, 5000);
+
+
+    } else {
+      console.log('fff')
+      clearInterval(this.dataRefresher);
+    }
+
+  }
+
+  // openSnackBar(message: string, action: string) {
+  //   this._snackBar.open(message, action, {
+  //     duration: 2000,
+  //   });
+  // }
+
+  onLogout() {
+    this.authService.logOut();
   }
 
 
   ngOnDestroy() {
 
     this.subMatch.unsubscribe();
+    this.answerSub.unsubscribe();
 
-    if(this.dataRefresher){
+    if (this.dataRefresher) {
+
       clearInterval(this.dataRefresher);
-  }
+    }
 
   }
 

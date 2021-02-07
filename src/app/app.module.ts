@@ -34,14 +34,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
-
-
-
-
-
-
-
-
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +69,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     MatDialogModule,
     MatSelectModule,
+    MatBadgeModule,
+    MatSnackBarModule,
     AppRoutingModule
   ],
   providers: [
