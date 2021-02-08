@@ -30,7 +30,7 @@ export class MatchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.refreshData();
+   this.refreshData();
     const currentDate = new Date();
     this.matchService.getMatches();
     this.subMatch = this.matchService.getMatchUpdateListener().subscribe(response => {
@@ -115,8 +115,8 @@ export class MatchComponent implements OnInit, OnDestroy {
         setInterval(() => {
           this.authService.getUserClickedCredential();
           this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
-            this.users = Response;
-            this.date = currentDate;
+             this.users = Response;
+             this.date = currentDate;
 
 
 

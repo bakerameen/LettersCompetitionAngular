@@ -6,6 +6,9 @@
 </div>
 <div class = "notification active">
 	<div class = "text" *ngFor="let user of users">
+    <button [disabled]="user.userCliceked" (click)="onHandRaised()" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+      <mat-icon>pan_tool</mat-icon>
+    </button>
     <b>{{user.userName}}</b>
     <!-- Hand raised by <b> -  -</b> {{date}} -->
 
@@ -26,9 +29,7 @@
     </div>
     <div class="card-body">
       <p class="card-text">  {{match.fPlayer}} -   {{match.sPlayer}}</p>
-      <button [disabled]="btnClicked" (click)="onHandRaised()" mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>pan_tool</mat-icon>
-      </button>
+
 
 
       <!-- <input [(ngModel)]="scoreVal">
