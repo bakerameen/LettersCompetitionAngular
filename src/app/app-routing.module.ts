@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './components/auth/auth.guard';
 import { LoginComponent } from './components/auth/login/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup/signup.component';
+import { BoardCreateComponent } from './components/board/board-create/board-create.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { MatchComponent } from './components/match/match.component';
 import { TeamCreateComponent } from './components/teams/team-create/team-create.component';
@@ -20,9 +22,8 @@ const routes: Routes = [
   { path: 'teamjoin/:teamId', component: TeamJoinComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
-  { path: 'match', component: MatchComponent}
-
-
+  { path: 'match', component: MatchComponent},
+  { path: 'board', component: BoardCreateComponent}
 ];
 
 @NgModule({

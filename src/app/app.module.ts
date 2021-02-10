@@ -36,6 +36,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+import { CountdownModule } from 'ngx-countdown';
+import { BoardComponent } from './components/board/board.component';
+import { BoardCreateComponent } from './components/board/board-create/board-create.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +56,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     TeamJoinComponent,
     MatchComponent,
     DialogUserInformationComponent,
+    BoardComponent,
+    BoardCreateComponent,
 
   ],
   imports: [
@@ -71,7 +78,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatBadgeModule,
     MatSnackBarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CountdownModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true},

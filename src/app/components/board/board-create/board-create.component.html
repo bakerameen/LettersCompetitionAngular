@@ -1,0 +1,37 @@
+<mat-card>
+<form (submit)="onAddLetters(lettersForm)" #lettersForm="ngForm">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title> Add Letters </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+
+  <mat-form-field class="example-full-width" >
+    <mat-label>Letter</mat-label>
+    <input matInput type="text" name="letter" ngModel #letterInput="ngModel">
+  </mat-form-field>
+
+
+ <mat-form-field class="example-full-width">
+    <mat-label>Color</mat-label>
+    <input matInput type="text" name="color" ngModel #colorInput="ngModel">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Font Color</mat-label>
+    <input matInput type="text" name="fontcolor" ngModel #fontcolorInput="ngModel">
+  </mat-form-field>
+
+  <div class="example-button-container">
+    <button type="submit" mat-raised-button color="accent">Add Letter</button>
+  </div>
+
+
+
+  </mat-card-content>
+</form>
+</mat-card>
+
+

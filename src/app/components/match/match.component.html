@@ -32,15 +32,15 @@
 
 
 
-      <!-- <input [(ngModel)]="scoreVal">
-      <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update score</button> -->
+      <input [(ngModel)]="scoreVal">
+      <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update score</button>
     </div>
   </div>
 </div>
 
 </div>
 </div>
-<br><br><br><br><br>
+
 <!-- ngIf Admin-->
 <div class="card">
   <div class="card-header">
@@ -48,6 +48,10 @@
   </div>
   <div class="card-body">
       <button mat-raised-button (click)="onReleasedClickedByAdmin()">Put Hand Down</button>
+
+      <countdown  class="countdown" #cd [config]="{leftTime: 5, demand: true}"></countdown>
+      <button mat-raised-button (click)="cd.resume()">Resume</button>
+      <button mat-raised-button (click)="cd.restart()">Clear</button>
       <!-- <button mat-raised-button (click)=stopClickListenerTimer() >stop click listener timer</button> -->
     </div>
 </div>
@@ -55,44 +59,6 @@
 
 
 
-
- <!-- <div *ngFor="let match of matches | slice:0:2; let i=index">
-  <br>
-  <h1>{{match.teamName}}</h1>
-  <h2>{{match.score}}</h2>
-  <h3>{{match.id}}</h3>
-  <br>
-  {{match.fPlayer}} -   {{match.sPlayer}}
-  <br>
-  {{match.score}}
-  <br>
-  <input [(ngModel)]="scoreVal">
+<app-board></app-board>
 
 
-
-  <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update score</button>
-  </div>
-
-
-
-<div>
-  <button mat-raised-button  (click)="onHandRaised()" >Raise Your Hand</button>
-</div>
-
-<br>
-
-<div *ngFor="let user of users">Hand raised by <b> - {{user.userName}} -</b> {{date}}</div>
-
-<br><br>
-<div>
-  <button mat-raised-button (click)="onReleasedClickedByAdmin()">Admin Realease clicked</button>
-</div>
-
-
-<br><br><br><br>
-<div>
-  <button (click)=stopClickListenerTimer() >stop click listener timer</button>
-</div>
-<div>
-  <button mat-raised-button (click)="onClickedinfoByAdmin()">Admin get Clicked info</button>
-</div> -->

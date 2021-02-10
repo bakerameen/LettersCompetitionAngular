@@ -7,6 +7,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { DialogUserInformationComponent } from './dialog-user-information/dialog-user-information.component';
 import { Answer } from './answer.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Board } from '../board/board.model';
 
 @Component({
   selector: 'app-match',
@@ -25,12 +26,14 @@ export class MatchComponent implements OnInit, OnDestroy {
   isShowTimer = true;
   scoreVal = 0;
   btnClicked = false;
+  Boards: Board[] = [];
 
-  constructor(private matchService: MatchService, private authService: AuthService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
+  constructor(private matchService: MatchService, private authService:
+    AuthService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
-   this.refreshData();
+    this.refreshData();
     const currentDate = new Date();
     this.matchService.getMatches();
     this.subMatch = this.matchService.getMatchUpdateListener().subscribe(response => {
@@ -41,7 +44,7 @@ export class MatchComponent implements OnInit, OnDestroy {
     this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
       this.users = Response;
       this.date = currentDate;
-    })
+    });
   }
 
 
@@ -115,8 +118,8 @@ export class MatchComponent implements OnInit, OnDestroy {
         setInterval(() => {
           this.authService.getUserClickedCredential();
           this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
-             this.users = Response;
-             this.date = currentDate;
+            this.users = Response;
+            this.date = currentDate;
 
 
 
