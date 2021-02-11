@@ -19,33 +19,33 @@ export class BoardComponent implements OnInit {
     this.boardService.getBoard();
     this.boradSub = this.boardService.getBoradListener().subscribe(responseData => {
       this.Boards = responseData;
-      this.shuffledArray = this.shuffleArray(this.Boards);
-      console.log(this.shuffledArray);
+
     });
   }
 
 
   shuffleArray(array) {
-    var m = array.length, t, i;
 
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
+this.boardService.updateArray(array);
 
-    return array;
+this.boardService.getBoradUpdatedListener().subscribe( Response => {
+this.boardService.getBoard();
+this.boradSub = this.boardService.getBoradListener().subscribe(responseData => {
+  this.Boards = responseData;
+});
+
+
+})
+
   }
 
 
   onGreenColor(index, letter) {
-    console.log(index, letter);
-
+    this.boardService.updateboardItem(index, letter, 'green', 'white');
   }
 
   onRedColor(index, letter) {
-    console.log(index, letter);
+    this.boardService.updateboardItem(index, letter, 'red', 'white');
   }
 
 }

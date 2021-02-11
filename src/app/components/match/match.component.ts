@@ -120,16 +120,12 @@ export class MatchComponent implements OnInit, OnDestroy {
           this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
             this.users = Response;
             this.date = currentDate;
-
-
-
             //  this._snackBar.open('Hand raised by ', 'Baqer', {
             //     duration: 5000,
             //   });
-
           });
 
-        }, 5000);
+        }, 2000);
 
 
     } else {

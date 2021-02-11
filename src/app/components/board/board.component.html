@@ -3,7 +3,7 @@
     <div id="hexGrid">
       <div class="hexCrop">
         <div class="hexGrid">
-          <div class="hex" *ngFor="let item of shuffledArray; let i = index" class="hex"
+          <div class="hex" *ngFor="let item of Boards; let i = index" class="hex"
           [style.background-color]="item.color">
           <span  (click)="onGreenColor(item.id, item.letter)"
           style="font-size: 15px; border: 0px white solid; width: 32px; height: 63px;"></span>
@@ -17,4 +17,4 @@
 
   </div>
 
-  <button type="submit" mat-raised-button color="accent" (click)="shuffleArray(shuffledArray)">Random a Letters</button>
+  <button type="submit" mat-raised-button color="accent" (click)="shuffleArray(Boards)">Random a Letters</button>
