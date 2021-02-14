@@ -5,6 +5,8 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Match } from '../match/match.model';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+
 
 
 @Injectable({
@@ -61,11 +63,16 @@ getMatches() {
        });
   }
 
+// matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName
+  updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName ) {
 
-  updateMatch(matchId, scoreVal) {
-    const teamUpdate = {matchId: matchId, score: scoreVal};
-this.http.put('http://localhost:8080/api/match/' + matchId, teamUpdate).subscribe(Response => {
-  console.log(Response);
+    const teamUpdate = {id: matchId, score: scoreVal, teamId: teamId, description:description, fPlayer: fPlayer, sPlayer: sPlayer, teamName: teamName };
+this.http.put<{message: Message, match: any}>('http://localhost:8080/api/match/' + matchId, teamUpdate).subscribe(Response => {
+  const updatedMatch = [...this.match];
+  const oldTeamIndex = updatedMatch.findIndex(p => p.id === teamUpdate.id);
+   updatedMatch[oldTeamIndex] = teamUpdate;
+   this.match = updatedMatch;
+   this.matchUpadted.next([...this.match]);
 })
   }
 

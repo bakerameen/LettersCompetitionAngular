@@ -62,8 +62,13 @@ export class MatchComponent implements OnInit, OnDestroy {
   //   })
   // }
 
-  updateScore(matchId, scoreVal) {
-    this.matchService.updateMatch(matchId, scoreVal);
+  // match.id, scoreVal, match.teamId, match.description, match.fPlayer, match.sPlayer, match.teamName
+  updateScore(matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName) {
+    this.matchService.updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName);
+    this.matchService.getMatchUpdateListener()
+     .subscribe( Response => {
+       console.log(Response);
+     });
   }
 
 

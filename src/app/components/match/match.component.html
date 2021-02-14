@@ -33,7 +33,7 @@
 
 
       <input [(ngModel)]="scoreVal">
-      <button mat-raised-button (click)="updateScore(match.id, scoreVal)">update score</button>
+      <button mat-raised-button (click)="updateScore(match.id, scoreVal, match.teamId, match.description, match.fPlayer, match.sPlayer, match.teamName)">update score</button>
     </div>
   </div>
 </div>
