@@ -1,7 +1,3 @@
-<div style="margin: 10px;">
-  <a (click)="onLogout()"><button mat-button color="accent">Logout</button></a>
-</div>
-
 <div class = "centered">
 </div>
 <div class = "notification active">
@@ -11,29 +7,25 @@
     </button>
     <b>{{user.userName}}</b>
     <!-- Hand raised by <b> -  -</b> {{date}} -->
-
 	</div>
 </div>
 
 
-<div class="container-fluid">
+<div class="container-fluid" sty >
   <div class="row" >
-<div class="col-xl-6 col-lg-6 col-sm-12" *ngFor="let match of matches | slice:0:2; let i=index">
-  <div class="card">
-    <div class="card-header">
-      {{match.teamName}}
-      <span matBadge="{{match.score}}" matBadgeSize="large" matBadgeColor="accent"></span>
-
-
-
+<div class="col-xl-6 col-lg-6 col-sm-6 team" *ngFor="let match of matches | slice:0:2; let i=index">
+  <div >
+    <div class="teamName text-right">
+      <span matBadge="{{match.score}}" matBadgeSize="large" matBadgeColor="accent"  matBadgeOverlap="false">{{match.teamName}}</span>
     </div>
-    <div class="card-body">
-      <p class="card-text">  {{match.fPlayer}} -   {{match.sPlayer}}</p>
+    <div class="palyers text-right">
+      <p >  {{match.fPlayer}} -   {{match.sPlayer}}</p>
 
 
-
-      <input [(ngModel)]="scoreVal">
-      <button mat-raised-button (click)="updateScore(match.id, scoreVal, match.teamId, match.description, match.fPlayer, match.sPlayer, match.teamName)">update score</button>
+<p *ngIf="userName === 'Admin'">
+      <input [(ngModel)]="scoreVal" class="updateScoreInput" >
+      <button mat-raised-button class="updateScoreBtn"  (click)="updateScore(match.id, scoreVal, match.teamId, match.description, match.fPlayer, match.sPlayer, match.teamName)">Score</button>
+    </p>
     </div>
   </div>
 </div>
@@ -42,16 +34,15 @@
 </div>
 
 <!-- ngIf Admin-->
-<div class="card">
-  <div class="card-header">
-    Admin Actions
-  </div>
-  <div class="card-body">
-      <button mat-raised-button (click)="onReleasedClickedByAdmin()">Put Hand Down</button>
+<div class="adminAction" *ngIf="userName === 'Admin'">
+  <div class="">
+    <button mat-fab color="accent" (click)="onReleasedClickedByAdmin()"><mat-icon>pan_tool</mat-icon></button>
 
-      <countdown  class="countdown" #cd [config]="{leftTime: 5, demand: true}"></countdown>
-      <button mat-raised-button (click)="cd.resume()">Resume</button>
-      <button mat-raised-button (click)="cd.restart()">Clear</button>
+    <countdown  class="countdown" #cd [config]="{leftTime: 7, demand: true}"></countdown>
+      <button mat-fab color="accent" mat-raised-button (click)="cd.resume()"><mat-icon>play_circle_outline</mat-icon></button>
+      <button mat-raised-button color="accent" (click)="cd.restart()"><mat-icon>pause_circle_outline</mat-icon></button>
+
+
       <!-- <button mat-raised-button (click)=stopClickListenerTimer() >stop click listener timer</button> -->
     </div>
 </div>

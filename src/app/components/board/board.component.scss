@@ -2,17 +2,16 @@
   flex-grow: 8;
   flex-basis: 600px;
   align-self: center;
-  border: 1px red solid;
   text-align: center;
-
   height: 500px;
+  margin-top:5px;
 }
 
 
 #hexGrid {
-  height: 23.7875em;
+  height: 27.7875em;
   margin: auto;
-  width: 50%;
+
   border-radius: 10px;
   padding: 30px 30px 29px;
   -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
@@ -21,15 +20,22 @@
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   padding: 15px;
-
   border-top:green calc(8px + 0.2vw) solid ;
   border-bottom:green calc(8px + 0.2vw) solid ;
   border-right:red calc(8px + 0.2vw) solid ;
   border-left:red calc(8px + 0.2vw) solid ;
   border-radius: 17%;
 
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 
   }
+
 
   #hexGrid .hexCrop {
     position: relative;

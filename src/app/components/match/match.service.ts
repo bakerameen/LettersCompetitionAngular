@@ -14,7 +14,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class MatchService {
 
-  // private url: string = 'http://localhost:8080/';
+  private url: string = 'http://localhost:8080';
   private match: Match[] = [];
   private matchUpadted = new Subject<Match[]>();
 
@@ -26,7 +26,7 @@ export class MatchService {
 
 // get matches
 getMatches() {
-   this.http.get<{message: string, matches: any}>('http://localhost:8080/api/match/')
+   this.http.get<{message: string, matches: any}>(this.url + '/api/match/')
    .pipe(map(matchdata => {
      console.log(matchdata)
      return matchdata.matches.map(matchResponse => {
@@ -53,7 +53,7 @@ getMatches() {
   addMatch(teamId: string, teamName: string, teamdescription: string, fPlayer: string, sPlayer: string, score: number) {
     const match: Match = { id: null, teamId: teamId, teamName: teamName, description: teamdescription, fPlayer: fPlayer, sPlayer: sPlayer, score: score };
 
-     this.http.post<{ message: string, matchId: string }>('http://localhost:8080/api/match/', match)
+     this.http.post<{ message: string, matchId: string }>(this.url + '/api/match/', match)
        .subscribe(responseData => {
 
         const matchId = responseData.matchId;
@@ -67,7 +67,7 @@ getMatches() {
   updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName ) {
 
     const teamUpdate = {id: matchId, score: scoreVal, teamId: teamId, description:description, fPlayer: fPlayer, sPlayer: sPlayer, teamName: teamName };
-this.http.put<{message: Message, match: any}>('http://localhost:8080/api/match/' + matchId, teamUpdate).subscribe(Response => {
+this.http.put<{message: Message, match: any}>(this.url + '/api/match/' + matchId, teamUpdate).subscribe(Response => {
   const updatedMatch = [...this.match];
   const oldTeamIndex = updatedMatch.findIndex(p => p.id === teamUpdate.id);
    updatedMatch[oldTeamIndex] = teamUpdate;
@@ -75,6 +75,7 @@ this.http.put<{message: Message, match: any}>('http://localhost:8080/api/match/'
    this.matchUpadted.next([...this.match]);
 })
   }
+
 
   getMatchUpdateListener() {
     return this.matchUpadted.asObservable();

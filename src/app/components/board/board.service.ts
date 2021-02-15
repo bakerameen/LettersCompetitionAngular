@@ -13,6 +13,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 })
 
 export class BoardService {
+  private url: string = 'http://localhost:8080';
   private board: Board[] = [];
   private boardUpadted = new Subject<Board[]>();
   private getBoradUpdated = new Subject<any>();
@@ -21,7 +22,7 @@ export class BoardService {
 
   // get matches
   getBoard() {
-    this.http.get<{ message: string, board: any[] }>('http://localhost:8080/api/board/')
+    this.http.get<{ message: string, board: any[] }>(this.url + '/api/board/')
       .pipe(map(boarddata => {
         console.log(boarddata);
         return boarddata.board.map(boardResponse => {
@@ -44,7 +45,7 @@ export class BoardService {
 
   addBoard(letters: string, colors: string, fontcolors: string ) {
     const board: Board = {  id: null, letter: letters, color: colors, fontcolor: fontcolors};
-    this.http.post('http://localhost:8080/api/board/', board)
+    this.http.post(this.url + '/api/board/', board)
      .subscribe( Response => {
         console.log(Response);
      });
@@ -54,7 +55,7 @@ export class BoardService {
 
   updateboardItem(id: any, letter: string, color: string, fontcolor: string){
 const boardItem = {id: id, letter: letter, color: color, fontcolor: fontcolor};
-this.http.put('http://localhost:8080/api/board/'+id, boardItem).subscribe(Response => {
+this.http.put(this.url + '/api/board/'+id, boardItem).subscribe(Response => {
   const updatedBoardItem = [...this.board];
   const oldItemIndex = updatedBoardItem.findIndex(p => p.id === boardItem.id);
   updatedBoardItem[oldItemIndex] = boardItem;
@@ -68,7 +69,7 @@ this.http.put('http://localhost:8080/api/board/'+id, boardItem).subscribe(Respon
   updateArray(array: any) {
   console.log('ana');
   const color = 'gray';
-  this.http.put('http://localhost:8080/api/board/', color).subscribe(Response => {
+  this.http.put(this.url  + '/api/board/', color).subscribe(Response => {
 const newArray = this.board;
 
     var m = newArray.length, t, i;

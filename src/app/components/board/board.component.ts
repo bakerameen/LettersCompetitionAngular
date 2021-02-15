@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Board } from './board.model';
 import { BoardService } from './board.service';
 
@@ -13,9 +14,15 @@ export class BoardComponent implements OnInit {
   randomLetters: Board[] = [];
   Boards: Board[] = [];
   boradSub: Subscription;
-  constructor(private boardService: BoardService) { }
+  userName: string;
+
+  constructor(private boardService: BoardService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.userName = this.authService.getUserName();
+    this.authService.geAuthStatusListener().subscribe( isAuthenticated => {
+      this.userName = this.authService.getUserName();
+    });
     this.boardService.getBoard();
     this.boradSub = this.boardService.getBoradListener().subscribe(responseData => {
       this.Boards = responseData;

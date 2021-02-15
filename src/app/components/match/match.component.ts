@@ -27,11 +27,16 @@ export class MatchComponent implements OnInit, OnDestroy {
   scoreVal = 0;
   btnClicked = false;
   Boards: Board[] = [];
+  userName: string;
 
   constructor(private matchService: MatchService, private authService:
     AuthService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+   this.userName = this.authService.getUserName();
+   this.authService.geAuthStatusListener().subscribe( isAuthenticated => {
+    this.userName = this.authService.getUserName();
+   });
 
     this.refreshData();
     const currentDate = new Date();

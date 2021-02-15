@@ -11,6 +11,7 @@ import { Answer } from '../match/answer.model';
 })
 export class AuthService {
 
+  private url: string = 'http://localhost:8080';
   private isAuthenticated = false;
   private token: string;
   private authStatusListener = new Subject<boolean>();
@@ -112,7 +113,7 @@ export class AuthService {
 
   createUser(email: string, password: string, name: string) {
     const authData: AuthData = { email: email, password: password, name: name };
-    this.http.post('http://localhost:8080/api/user/signup', authData)
+    this.http.post(this.url + '/api/user/signup', authData)
       .subscribe(response => {
         this.router.navigate(["/"]);
       }, error => {
@@ -122,7 +123,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     const authData: AuthData = { email: email, password: password, name: null }
-    this.http.post<{ token: string, expiresIn: number, userID: string, name: string }>('http://localhost:8080/api/user/login', authData).subscribe(response => {
+    this.http.post<{ token: string, expiresIn: number, userID: string, name: string }>(this.url + '/api/user/login', authData).subscribe(response => {
       console.log(response);
       const token = response.token;
       this.token = token;
@@ -161,7 +162,7 @@ export class AuthService {
   }
 
   getPlayers() {
-    this.http.get<{ message: string, users: any }>('http://localhost:8080/api/user/users').subscribe((players) => {
+    this.http.get<{ message: string, users: any }>(this.url  + '/api/user/users').subscribe((players) => {
       const playersArray = players.users;
       this.playersNew = playersArray;
       this.playersUpdated.next([...this.playersNew]);
@@ -176,7 +177,7 @@ export class AuthService {
 
   addUserClickedCredential() {
     const userAnswerede: Answer = { _id: null, userName: 'toto', userCliceked: true }
-    return this.http.post<{ message: string, answeredId: string }>('http://localhost:8080/api/answer', userAnswerede).subscribe(
+    return this.http.post<{ message: string, answeredId: string }>(this.url + '/api/answer', userAnswerede).subscribe(
       response => {
         const answerId = response.answeredId;
         userAnswerede._id = answerId;
@@ -188,7 +189,7 @@ export class AuthService {
   }
 
   getUserClickedCredential() {
-    this.http.get<{ message: string, answer: any }>('http://localhost:8080/api/answer').subscribe(response => {
+    this.http.get<{ message: string, answer: any }>(this.url + '/api/answer').subscribe(response => {
       this.answer = response.answer;
       this.answerUpdate.next([...this.answer]);
         });
@@ -202,7 +203,7 @@ export class AuthService {
 
     const answerid = '6017a15ed79fc79624e045a5';
 
-    this.http.put<{ message: string; username: string }>('http://localhost:8080/api/answer/' + answerid, userAnswerede).subscribe(response => {
+    this.http.put<{ message: string; username: string }>(this.url + '/api/answer/' + answerid, userAnswerede).subscribe(response => {
       const updatedAnswer = [...this.answer];
       const oldAnswerIndex = updatedAnswer.findIndex(p => p._id === userAnswerede._id);
       updatedAnswer[oldAnswerIndex] = userAnswerede;
@@ -220,7 +221,7 @@ export class AuthService {
 
     const answerid = '6017a15ed79fc79624e045a5';
 
-    this.http.put('http://localhost:8080/api/answer/admin/' + answerid, userAnswerede).subscribe(response => {
+    this.http.put(this.url + '/api/answer/admin/' + answerid, userAnswerede).subscribe(response => {
 
       const updatedAnswer = [...this.answer];
       const oldAnswerIndex = updatedAnswer.findIndex(p => p._id === userAnswerede._id);

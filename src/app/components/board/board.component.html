@@ -1,14 +1,15 @@
   <!-- Board -->
-  <div class="board">
+  <div >
+  <div class="board" >
     <div id="hexGrid">
       <div class="hexCrop">
         <div class="hexGrid">
           <div class="hex" *ngFor="let item of Boards; let i = index" class="hex"
           [style.background-color]="item.color">
-          <span  (click)="onGreenColor(item.id, item.letter)"
+          <span *ngIf="userName === 'Admin'"  (click)="onGreenColor(item.id, item.letter)"
           style="font-size: 15px; border: 0px white solid; width: 32px; height: 63px;"></span>
             <span [style.color]="item.fontcolor">{{item.letter}}</span>
-            <span  (click)="onRedColor(item.id, item.letter)" style="font-size: 15px; border: 0px white solid; width: 32px;
+            <span *ngIf="userName === 'Admin'"  (click)="onRedColor(item.id, item.letter)" style="font-size: 15px; border: 0px white solid; width: 32px;
              height: 63px;"></span>
           </div>
         </div>
@@ -16,5 +17,10 @@
     </div>
 
   </div>
+<div style="position: absolute; bottom: 0; right: 0">
+  <button *ngIf="userName === 'Admin'" type="submit" mat-raised-button mat-fab color="Primary" (click)="shuffleArray(Boards)"><mat-icon>shuffle</mat-icon></button>
 
-  <button type="submit" mat-raised-button color="accent" (click)="shuffleArray(Boards)">Random a Letters</button>
+
+
+</div>
+</div>

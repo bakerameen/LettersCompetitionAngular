@@ -3,6 +3,58 @@ html,body{
 	height:100%;
 	font-family:Roboto;
 }
+
+.team{
+  border: 1px white solid;
+  height: 100px !important;
+}
+
+.team:first-child {
+  margin: auto;
+    width: 50%;
+    border: 1px solid #0b122e;
+    border-radius: 10px;
+    padding: 30px 30px 29px;
+    box-shadow: 0px 10px 15px 0px rgb(0 0 0 / 40%);
+    transition: all 0.3s ease-in;
+    border: 1px solid #0b122e;
+    padding: 10px;
+    height: 60px;
+    border-top: green calc(2px + 0.1vw) solid;
+    border-bottom: green calc(2px + 0.1vw) solid;
+    border-right: green calc(2px + 0.1vw) solid;
+    border-left: green calc(2px + 0.1vw) solid;
+}
+
+.team:nth-child(2) {
+    margin: auto;
+    width: 50%;
+    border: 1px solid #0b122e;
+    border-radius: 10px;
+    padding: 30px 30px 29px;
+    box-shadow: 0px 10px 15px 0px rgb(0 0 0 / 40%);
+    transition: all 0.3s ease-in;
+    border: 1px solid #0b122e;
+    padding: 10px;
+    height: 60px;
+    border-top: red calc(2px + 0.1vw) solid;
+    border-bottom: red calc(2px + 0.1vw) solid;
+    border-right: red calc(2px + 0.1vw) solid;
+    border-left: red calc(2px + 0.1vw) solid;
+}
+
+.teamName{
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.palyers{
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .centered{
 	position:absolute;
 	left:50%;
@@ -190,587 +242,25 @@ html,body{
 }
 
 
-#hexGrid {
-  height: 23.7875em;
-  margin: auto;
-  width: 50%;
-  border-radius: 10px;
-  padding: 30px 30px 29px;
-  -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
-  -webkit-transition: all 0.3s ease-in;
-  -o-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
-  padding: 15px;
 
-  border-top:green calc(8px + 0.2vw) solid ;
-  border-bottom:green calc(8px + 0.2vw) solid ;
-  border-right:red calc(8px + 0.2vw) solid ;
-  border-left:red calc(8px + 0.2vw) solid ;
-  border-radius: 17%;
-
-
-  }
-
-  #hexGrid .hexCrop {
-    position: relative;
-    overflow: visible;
-  }
-
-  #hexGrid .hexGrid {
-    display: -ms-grid;
-    display: grid;
-
-    justify-items: auto;
-    -webkit-box-align: auto;
-        -ms-flex-align: auto;
-            align-items: auto;
-    height: 23.7875em;
-
-    -ms-grid-columns: (1fr 2fr)[5] 1fr;
-        grid-template-columns: repeat(5, 1fr 2fr) 1fr;
-    -ms-grid-rows: (2.1625em)[11];
-        grid-template-rows: repeat(11, 2.1625em);
-  }
-
-  #hexGrid .hexGrid .hex {
-    display: none;
-  }
-
-  #hexGrid .hexGrid .c-1, #hexGrid .hexGrid .hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(11), #hexGrid .hexGrid .hex:nth-child(16), #hexGrid .hexGrid .hex:nth-child(21) {
-    -ms-grid-column: 1;
-        grid-column-start: 1;
-    -ms-grid-column-span: 3;
-        grid-column-end: span 3;
-  }
-
-  #hexGrid .hexGrid .c-1.r-1, #hexGrid .hexGrid .hex:nth-child(1), #hexGrid .hexGrid .c-1.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(6), #hexGrid .hexGrid .hex:nth-child(2):nth-child(11), #hexGrid .hexGrid .hex:nth-child(2):nth-child(16), #hexGrid .hexGrid .hex:nth-child(2):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(6), #hexGrid .hexGrid .hex:nth-child(3):nth-child(11), #hexGrid .hexGrid .hex:nth-child(3):nth-child(16), #hexGrid .hexGrid .hex:nth-child(3):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(6), #hexGrid .hexGrid .hex:nth-child(4):nth-child(11), #hexGrid .hexGrid .hex:nth-child(4):nth-child(16), #hexGrid .hexGrid .hex:nth-child(4):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(6), #hexGrid .hexGrid .hex:nth-child(5):nth-child(11), #hexGrid .hexGrid .hex:nth-child(5):nth-child(16), #hexGrid .hexGrid .hex:nth-child(5):nth-child(21), #hexGrid .hexGrid .r-1.hex:nth-child(6), #hexGrid .hexGrid .r-1.hex:nth-child(11), #hexGrid .hexGrid .r-1.hex:nth-child(16), #hexGrid .hexGrid .r-1.hex:nth-child(21) {
-    -ms-grid-row: 1;
-        grid-row-start: 1;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-1.r-2, #hexGrid .hexGrid .r-2.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(7), #hexGrid .hexGrid .hex:nth-child(1):nth-child(8), #hexGrid .hexGrid .hex:nth-child(1):nth-child(9), #hexGrid .hexGrid .hex:nth-child(1):nth-child(10), #hexGrid .hexGrid .hex:nth-child(6), #hexGrid .hexGrid .c-1.hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(7):nth-child(11), #hexGrid .hexGrid .hex:nth-child(7):nth-child(16), #hexGrid .hexGrid .hex:nth-child(7):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(8):nth-child(11), #hexGrid .hexGrid .hex:nth-child(8):nth-child(16), #hexGrid .hexGrid .hex:nth-child(8):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(9):nth-child(11), #hexGrid .hexGrid .hex:nth-child(9):nth-child(16), #hexGrid .hexGrid .hex:nth-child(9):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(10):nth-child(11), #hexGrid .hexGrid .hex:nth-child(10):nth-child(16), #hexGrid .hexGrid .hex:nth-child(10):nth-child(21), #hexGrid .hexGrid .r-2.hex:nth-child(11), #hexGrid .hexGrid .r-2.hex:nth-child(16), #hexGrid .hexGrid .r-2.hex:nth-child(21) {
-    -ms-grid-row: 3;
-        grid-row-start: 3;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-1.r-3, #hexGrid .hexGrid .r-3.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(12), #hexGrid .hexGrid .hex:nth-child(1):nth-child(13), #hexGrid .hexGrid .hex:nth-child(1):nth-child(14), #hexGrid .hexGrid .hex:nth-child(1):nth-child(15), #hexGrid .hexGrid .r-3.hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(6):nth-child(12), #hexGrid .hexGrid .hex:nth-child(6):nth-child(13), #hexGrid .hexGrid .hex:nth-child(6):nth-child(14), #hexGrid .hexGrid .hex:nth-child(6):nth-child(15), #hexGrid .hexGrid .hex:nth-child(11), #hexGrid .hexGrid .c-1.hex:nth-child(12), #hexGrid .hexGrid .hex:nth-child(12):nth-child(16), #hexGrid .hexGrid .hex:nth-child(12):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(13), #hexGrid .hexGrid .hex:nth-child(13):nth-child(16), #hexGrid .hexGrid .hex:nth-child(13):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(14), #hexGrid .hexGrid .hex:nth-child(14):nth-child(16), #hexGrid .hexGrid .hex:nth-child(14):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(15), #hexGrid .hexGrid .hex:nth-child(15):nth-child(16), #hexGrid .hexGrid .hex:nth-child(15):nth-child(21), #hexGrid .hexGrid .r-3.hex:nth-child(16), #hexGrid .hexGrid .r-3.hex:nth-child(21) {
-    -ms-grid-row: 5;
-        grid-row-start: 5;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-1.r-4, #hexGrid .hexGrid .r-4.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(17), #hexGrid .hexGrid .hex:nth-child(1):nth-child(18), #hexGrid .hexGrid .hex:nth-child(1):nth-child(19), #hexGrid .hexGrid .hex:nth-child(1):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(6):nth-child(17), #hexGrid .hexGrid .hex:nth-child(6):nth-child(18), #hexGrid .hexGrid .hex:nth-child(6):nth-child(19), #hexGrid .hexGrid .hex:nth-child(6):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(11), #hexGrid .hexGrid .hex:nth-child(11):nth-child(17), #hexGrid .hexGrid .hex:nth-child(11):nth-child(18), #hexGrid .hexGrid .hex:nth-child(11):nth-child(19), #hexGrid .hexGrid .hex:nth-child(11):nth-child(20), #hexGrid .hexGrid .hex:nth-child(16), #hexGrid .hexGrid .c-1.hex:nth-child(17), #hexGrid .hexGrid .hex:nth-child(17):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(18), #hexGrid .hexGrid .hex:nth-child(18):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(19), #hexGrid .hexGrid .hex:nth-child(19):nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(20), #hexGrid .hexGrid .hex:nth-child(20):nth-child(21), #hexGrid .hexGrid .r-4.hex:nth-child(21) {
-    -ms-grid-row: 7;
-        grid-row-start: 7;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-1.r-5, #hexGrid .hexGrid .r-5.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(22), #hexGrid .hexGrid .hex:nth-child(1):nth-child(23), #hexGrid .hexGrid .hex:nth-child(1):nth-child(24), #hexGrid .hexGrid .hex:nth-child(1):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(6):nth-child(22), #hexGrid .hexGrid .hex:nth-child(6):nth-child(23), #hexGrid .hexGrid .hex:nth-child(6):nth-child(24), #hexGrid .hexGrid .hex:nth-child(6):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(11), #hexGrid .hexGrid .hex:nth-child(11):nth-child(22), #hexGrid .hexGrid .hex:nth-child(11):nth-child(23), #hexGrid .hexGrid .hex:nth-child(11):nth-child(24), #hexGrid .hexGrid .hex:nth-child(11):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(16), #hexGrid .hexGrid .hex:nth-child(16):nth-child(22), #hexGrid .hexGrid .hex:nth-child(16):nth-child(23), #hexGrid .hexGrid .hex:nth-child(16):nth-child(24), #hexGrid .hexGrid .hex:nth-child(16):nth-child(25), #hexGrid .hexGrid .hex:nth-child(21), #hexGrid .hexGrid .c-1.hex:nth-child(22), #hexGrid .hexGrid .c-1.hex:nth-child(23), #hexGrid .hexGrid .c-1.hex:nth-child(24), #hexGrid .hexGrid .c-1.hex:nth-child(25) {
-    -ms-grid-row: 9;
-        grid-row-start: 9;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-2, #hexGrid .hexGrid .hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(12), #hexGrid .hexGrid .hex:nth-child(17), #hexGrid .hexGrid .hex:nth-child(22) {
-    -ms-grid-column: 3;
-        grid-column-start: 3;
-    -ms-grid-column-span: 3;
-        grid-column-end: span 3;
-  }
-
-  #hexGrid .hexGrid .c-2.r-1, #hexGrid .hexGrid .c-2.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(7), #hexGrid .hexGrid .hex:nth-child(1):nth-child(12), #hexGrid .hexGrid .hex:nth-child(1):nth-child(17), #hexGrid .hexGrid .hex:nth-child(1):nth-child(22), #hexGrid .hexGrid .hex:nth-child(2), #hexGrid .hexGrid .c-2.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(7), #hexGrid .hexGrid .hex:nth-child(3):nth-child(12), #hexGrid .hexGrid .hex:nth-child(3):nth-child(17), #hexGrid .hexGrid .hex:nth-child(3):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(7), #hexGrid .hexGrid .hex:nth-child(4):nth-child(12), #hexGrid .hexGrid .hex:nth-child(4):nth-child(17), #hexGrid .hexGrid .hex:nth-child(4):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(7), #hexGrid .hexGrid .hex:nth-child(5):nth-child(12), #hexGrid .hexGrid .hex:nth-child(5):nth-child(17), #hexGrid .hexGrid .hex:nth-child(5):nth-child(22), #hexGrid .hexGrid .r-1.hex:nth-child(7), #hexGrid .hexGrid .r-1.hex:nth-child(12), #hexGrid .hexGrid .r-1.hex:nth-child(17), #hexGrid .hexGrid .r-1.hex:nth-child(22) {
-    -ms-grid-row: 2;
-        grid-row-start: 2;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-2.r-2, #hexGrid .hexGrid .r-2.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(6), #hexGrid .hexGrid .hex:nth-child(2):nth-child(8), #hexGrid .hexGrid .hex:nth-child(2):nth-child(9), #hexGrid .hexGrid .hex:nth-child(2):nth-child(10), #hexGrid .hexGrid .c-2.hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(6):nth-child(12), #hexGrid .hexGrid .hex:nth-child(6):nth-child(17), #hexGrid .hexGrid .hex:nth-child(6):nth-child(22), #hexGrid .hexGrid .hex:nth-child(7), #hexGrid .hexGrid .c-2.hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(8):nth-child(12), #hexGrid .hexGrid .hex:nth-child(8):nth-child(17), #hexGrid .hexGrid .hex:nth-child(8):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(9):nth-child(12), #hexGrid .hexGrid .hex:nth-child(9):nth-child(17), #hexGrid .hexGrid .hex:nth-child(9):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(10):nth-child(12), #hexGrid .hexGrid .hex:nth-child(10):nth-child(17), #hexGrid .hexGrid .hex:nth-child(10):nth-child(22), #hexGrid .hexGrid .r-2.hex:nth-child(12), #hexGrid .hexGrid .r-2.hex:nth-child(17), #hexGrid .hexGrid .r-2.hex:nth-child(22) {
-    -ms-grid-row: 4;
-        grid-row-start: 4;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-2.r-3, #hexGrid .hexGrid .r-3.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(11), #hexGrid .hexGrid .hex:nth-child(2):nth-child(13), #hexGrid .hexGrid .hex:nth-child(2):nth-child(14), #hexGrid .hexGrid .hex:nth-child(2):nth-child(15), #hexGrid .hexGrid .r-3.hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(7):nth-child(11), #hexGrid .hexGrid .hex:nth-child(7):nth-child(13), #hexGrid .hexGrid .hex:nth-child(7):nth-child(14), #hexGrid .hexGrid .hex:nth-child(7):nth-child(15), #hexGrid .hexGrid .c-2.hex:nth-child(11), #hexGrid .hexGrid .hex:nth-child(11):nth-child(17), #hexGrid .hexGrid .hex:nth-child(11):nth-child(22), #hexGrid .hexGrid .hex:nth-child(12), #hexGrid .hexGrid .c-2.hex:nth-child(13), #hexGrid .hexGrid .hex:nth-child(13):nth-child(17), #hexGrid .hexGrid .hex:nth-child(13):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(14), #hexGrid .hexGrid .hex:nth-child(14):nth-child(17), #hexGrid .hexGrid .hex:nth-child(14):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(15), #hexGrid .hexGrid .hex:nth-child(15):nth-child(17), #hexGrid .hexGrid .hex:nth-child(15):nth-child(22), #hexGrid .hexGrid .r-3.hex:nth-child(17), #hexGrid .hexGrid .r-3.hex:nth-child(22) {
-    -ms-grid-row: 6;
-        grid-row-start: 6;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-2.r-4, #hexGrid .hexGrid .r-4.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(16), #hexGrid .hexGrid .hex:nth-child(2):nth-child(18), #hexGrid .hexGrid .hex:nth-child(2):nth-child(19), #hexGrid .hexGrid .hex:nth-child(2):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(7):nth-child(16), #hexGrid .hexGrid .hex:nth-child(7):nth-child(18), #hexGrid .hexGrid .hex:nth-child(7):nth-child(19), #hexGrid .hexGrid .hex:nth-child(7):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(12), #hexGrid .hexGrid .hex:nth-child(12):nth-child(16), #hexGrid .hexGrid .hex:nth-child(12):nth-child(18), #hexGrid .hexGrid .hex:nth-child(12):nth-child(19), #hexGrid .hexGrid .hex:nth-child(12):nth-child(20), #hexGrid .hexGrid .c-2.hex:nth-child(16), #hexGrid .hexGrid .hex:nth-child(16):nth-child(22), #hexGrid .hexGrid .hex:nth-child(17), #hexGrid .hexGrid .c-2.hex:nth-child(18), #hexGrid .hexGrid .hex:nth-child(18):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(19), #hexGrid .hexGrid .hex:nth-child(19):nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(20), #hexGrid .hexGrid .hex:nth-child(20):nth-child(22), #hexGrid .hexGrid .r-4.hex:nth-child(22) {
-    -ms-grid-row: 8;
-        grid-row-start: 8;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-2.r-5, #hexGrid .hexGrid .r-5.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(21), #hexGrid .hexGrid .hex:nth-child(2):nth-child(23), #hexGrid .hexGrid .hex:nth-child(2):nth-child(24), #hexGrid .hexGrid .hex:nth-child(2):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(7):nth-child(21), #hexGrid .hexGrid .hex:nth-child(7):nth-child(23), #hexGrid .hexGrid .hex:nth-child(7):nth-child(24), #hexGrid .hexGrid .hex:nth-child(7):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(12), #hexGrid .hexGrid .hex:nth-child(12):nth-child(21), #hexGrid .hexGrid .hex:nth-child(12):nth-child(23), #hexGrid .hexGrid .hex:nth-child(12):nth-child(24), #hexGrid .hexGrid .hex:nth-child(12):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(17), #hexGrid .hexGrid .hex:nth-child(17):nth-child(21), #hexGrid .hexGrid .hex:nth-child(17):nth-child(23), #hexGrid .hexGrid .hex:nth-child(17):nth-child(24), #hexGrid .hexGrid .hex:nth-child(17):nth-child(25), #hexGrid .hexGrid .c-2.hex:nth-child(21), #hexGrid .hexGrid .hex:nth-child(22), #hexGrid .hexGrid .c-2.hex:nth-child(23), #hexGrid .hexGrid .c-2.hex:nth-child(24), #hexGrid .hexGrid .c-2.hex:nth-child(25) {
-    -ms-grid-row: 10;
-        grid-row-start: 10;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-3, #hexGrid .hexGrid .hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(13), #hexGrid .hexGrid .hex:nth-child(18), #hexGrid .hexGrid .hex:nth-child(23) {
-    -ms-grid-column: 5;
-        grid-column-start: 5;
-    -ms-grid-column-span: 3;
-        grid-column-end: span 3;
-  }
-
-  #hexGrid .hexGrid .c-3.r-1, #hexGrid .hexGrid .c-3.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(8), #hexGrid .hexGrid .hex:nth-child(1):nth-child(13), #hexGrid .hexGrid .hex:nth-child(1):nth-child(18), #hexGrid .hexGrid .hex:nth-child(1):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(8), #hexGrid .hexGrid .hex:nth-child(2):nth-child(13), #hexGrid .hexGrid .hex:nth-child(2):nth-child(18), #hexGrid .hexGrid .hex:nth-child(2):nth-child(23), #hexGrid .hexGrid .hex:nth-child(3), #hexGrid .hexGrid .c-3.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(8), #hexGrid .hexGrid .hex:nth-child(4):nth-child(13), #hexGrid .hexGrid .hex:nth-child(4):nth-child(18), #hexGrid .hexGrid .hex:nth-child(4):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(8), #hexGrid .hexGrid .hex:nth-child(5):nth-child(13), #hexGrid .hexGrid .hex:nth-child(5):nth-child(18), #hexGrid .hexGrid .hex:nth-child(5):nth-child(23), #hexGrid .hexGrid .r-1.hex:nth-child(8), #hexGrid .hexGrid .r-1.hex:nth-child(13), #hexGrid .hexGrid .r-1.hex:nth-child(18), #hexGrid .hexGrid .r-1.hex:nth-child(23) {
-    -ms-grid-row: 1;
-        grid-row-start: 1;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-3.r-2, #hexGrid .hexGrid .r-2.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(6), #hexGrid .hexGrid .hex:nth-child(3):nth-child(7), #hexGrid .hexGrid .hex:nth-child(3):nth-child(9), #hexGrid .hexGrid .hex:nth-child(3):nth-child(10), #hexGrid .hexGrid .c-3.hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(6):nth-child(13), #hexGrid .hexGrid .hex:nth-child(6):nth-child(18), #hexGrid .hexGrid .hex:nth-child(6):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(7):nth-child(13), #hexGrid .hexGrid .hex:nth-child(7):nth-child(18), #hexGrid .hexGrid .hex:nth-child(7):nth-child(23), #hexGrid .hexGrid .hex:nth-child(8), #hexGrid .hexGrid .c-3.hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(9):nth-child(13), #hexGrid .hexGrid .hex:nth-child(9):nth-child(18), #hexGrid .hexGrid .hex:nth-child(9):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(10):nth-child(13), #hexGrid .hexGrid .hex:nth-child(10):nth-child(18), #hexGrid .hexGrid .hex:nth-child(10):nth-child(23), #hexGrid .hexGrid .r-2.hex:nth-child(13), #hexGrid .hexGrid .r-2.hex:nth-child(18), #hexGrid .hexGrid .r-2.hex:nth-child(23) {
-    -ms-grid-row: 3;
-        grid-row-start: 3;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-3.r-3, #hexGrid .hexGrid .r-3.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(11), #hexGrid .hexGrid .hex:nth-child(3):nth-child(12), #hexGrid .hexGrid .hex:nth-child(3):nth-child(14), #hexGrid .hexGrid .hex:nth-child(3):nth-child(15), #hexGrid .hexGrid .r-3.hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(8):nth-child(11), #hexGrid .hexGrid .hex:nth-child(8):nth-child(12), #hexGrid .hexGrid .hex:nth-child(8):nth-child(14), #hexGrid .hexGrid .hex:nth-child(8):nth-child(15), #hexGrid .hexGrid .c-3.hex:nth-child(11), #hexGrid .hexGrid .hex:nth-child(11):nth-child(18), #hexGrid .hexGrid .hex:nth-child(11):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(12), #hexGrid .hexGrid .hex:nth-child(12):nth-child(18), #hexGrid .hexGrid .hex:nth-child(12):nth-child(23), #hexGrid .hexGrid .hex:nth-child(13), #hexGrid .hexGrid .c-3.hex:nth-child(14), #hexGrid .hexGrid .hex:nth-child(14):nth-child(18), #hexGrid .hexGrid .hex:nth-child(14):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(15), #hexGrid .hexGrid .hex:nth-child(15):nth-child(18), #hexGrid .hexGrid .hex:nth-child(15):nth-child(23), #hexGrid .hexGrid .r-3.hex:nth-child(18), #hexGrid .hexGrid .r-3.hex:nth-child(23) {
-    -ms-grid-row: 5;
-        grid-row-start: 5;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-3.r-4, #hexGrid .hexGrid .r-4.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(16), #hexGrid .hexGrid .hex:nth-child(3):nth-child(17), #hexGrid .hexGrid .hex:nth-child(3):nth-child(19), #hexGrid .hexGrid .hex:nth-child(3):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(8):nth-child(16), #hexGrid .hexGrid .hex:nth-child(8):nth-child(17), #hexGrid .hexGrid .hex:nth-child(8):nth-child(19), #hexGrid .hexGrid .hex:nth-child(8):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(13), #hexGrid .hexGrid .hex:nth-child(13):nth-child(16), #hexGrid .hexGrid .hex:nth-child(13):nth-child(17), #hexGrid .hexGrid .hex:nth-child(13):nth-child(19), #hexGrid .hexGrid .hex:nth-child(13):nth-child(20), #hexGrid .hexGrid .c-3.hex:nth-child(16), #hexGrid .hexGrid .hex:nth-child(16):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(17), #hexGrid .hexGrid .hex:nth-child(17):nth-child(23), #hexGrid .hexGrid .hex:nth-child(18), #hexGrid .hexGrid .c-3.hex:nth-child(19), #hexGrid .hexGrid .hex:nth-child(19):nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(20), #hexGrid .hexGrid .hex:nth-child(20):nth-child(23), #hexGrid .hexGrid .r-4.hex:nth-child(23) {
-    -ms-grid-row: 7;
-        grid-row-start: 7;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-3.r-5, #hexGrid .hexGrid .r-5.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(21), #hexGrid .hexGrid .hex:nth-child(3):nth-child(22), #hexGrid .hexGrid .hex:nth-child(3):nth-child(24), #hexGrid .hexGrid .hex:nth-child(3):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(8):nth-child(21), #hexGrid .hexGrid .hex:nth-child(8):nth-child(22), #hexGrid .hexGrid .hex:nth-child(8):nth-child(24), #hexGrid .hexGrid .hex:nth-child(8):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(13), #hexGrid .hexGrid .hex:nth-child(13):nth-child(21), #hexGrid .hexGrid .hex:nth-child(13):nth-child(22), #hexGrid .hexGrid .hex:nth-child(13):nth-child(24), #hexGrid .hexGrid .hex:nth-child(13):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(18), #hexGrid .hexGrid .hex:nth-child(18):nth-child(21), #hexGrid .hexGrid .hex:nth-child(18):nth-child(22), #hexGrid .hexGrid .hex:nth-child(18):nth-child(24), #hexGrid .hexGrid .hex:nth-child(18):nth-child(25), #hexGrid .hexGrid .c-3.hex:nth-child(21), #hexGrid .hexGrid .c-3.hex:nth-child(22), #hexGrid .hexGrid .hex:nth-child(23), #hexGrid .hexGrid .c-3.hex:nth-child(24), #hexGrid .hexGrid .c-3.hex:nth-child(25) {
-    -ms-grid-row: 9;
-        grid-row-start: 9;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-4, #hexGrid .hexGrid .hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(14), #hexGrid .hexGrid .hex:nth-child(19), #hexGrid .hexGrid .hex:nth-child(24) {
-    -ms-grid-column: 7;
-        grid-column-start: 7;
-    -ms-grid-column-span: 3;
-        grid-column-end: span 3;
-  }
-
-  #hexGrid .hexGrid .c-4.r-1, #hexGrid .hexGrid .c-4.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(9), #hexGrid .hexGrid .hex:nth-child(1):nth-child(14), #hexGrid .hexGrid .hex:nth-child(1):nth-child(19), #hexGrid .hexGrid .hex:nth-child(1):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(9), #hexGrid .hexGrid .hex:nth-child(2):nth-child(14), #hexGrid .hexGrid .hex:nth-child(2):nth-child(19), #hexGrid .hexGrid .hex:nth-child(2):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(9), #hexGrid .hexGrid .hex:nth-child(3):nth-child(14), #hexGrid .hexGrid .hex:nth-child(3):nth-child(19), #hexGrid .hexGrid .hex:nth-child(3):nth-child(24), #hexGrid .hexGrid .hex:nth-child(4), #hexGrid .hexGrid .c-4.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(9), #hexGrid .hexGrid .hex:nth-child(5):nth-child(14), #hexGrid .hexGrid .hex:nth-child(5):nth-child(19), #hexGrid .hexGrid .hex:nth-child(5):nth-child(24), #hexGrid .hexGrid .r-1.hex:nth-child(9), #hexGrid .hexGrid .r-1.hex:nth-child(14), #hexGrid .hexGrid .r-1.hex:nth-child(19), #hexGrid .hexGrid .r-1.hex:nth-child(24) {
-    -ms-grid-row: 2;
-        grid-row-start: 2;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-4.r-2, #hexGrid .hexGrid .r-2.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(6), #hexGrid .hexGrid .hex:nth-child(4):nth-child(7), #hexGrid .hexGrid .hex:nth-child(4):nth-child(8), #hexGrid .hexGrid .hex:nth-child(4):nth-child(10), #hexGrid .hexGrid .c-4.hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(6):nth-child(14), #hexGrid .hexGrid .hex:nth-child(6):nth-child(19), #hexGrid .hexGrid .hex:nth-child(6):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(7):nth-child(14), #hexGrid .hexGrid .hex:nth-child(7):nth-child(19), #hexGrid .hexGrid .hex:nth-child(7):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(8):nth-child(14), #hexGrid .hexGrid .hex:nth-child(8):nth-child(19), #hexGrid .hexGrid .hex:nth-child(8):nth-child(24), #hexGrid .hexGrid .hex:nth-child(9), #hexGrid .hexGrid .c-4.hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(10):nth-child(14), #hexGrid .hexGrid .hex:nth-child(10):nth-child(19), #hexGrid .hexGrid .hex:nth-child(10):nth-child(24), #hexGrid .hexGrid .r-2.hex:nth-child(14), #hexGrid .hexGrid .r-2.hex:nth-child(19), #hexGrid .hexGrid .r-2.hex:nth-child(24) {
-    -ms-grid-row: 4;
-        grid-row-start: 4;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-4.r-3, #hexGrid .hexGrid .r-3.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(11), #hexGrid .hexGrid .hex:nth-child(4):nth-child(12), #hexGrid .hexGrid .hex:nth-child(4):nth-child(13), #hexGrid .hexGrid .hex:nth-child(4):nth-child(15), #hexGrid .hexGrid .r-3.hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(9):nth-child(11), #hexGrid .hexGrid .hex:nth-child(9):nth-child(12), #hexGrid .hexGrid .hex:nth-child(9):nth-child(13), #hexGrid .hexGrid .hex:nth-child(9):nth-child(15), #hexGrid .hexGrid .c-4.hex:nth-child(11), #hexGrid .hexGrid .hex:nth-child(11):nth-child(19), #hexGrid .hexGrid .hex:nth-child(11):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(12), #hexGrid .hexGrid .hex:nth-child(12):nth-child(19), #hexGrid .hexGrid .hex:nth-child(12):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(13), #hexGrid .hexGrid .hex:nth-child(13):nth-child(19), #hexGrid .hexGrid .hex:nth-child(13):nth-child(24), #hexGrid .hexGrid .hex:nth-child(14), #hexGrid .hexGrid .c-4.hex:nth-child(15), #hexGrid .hexGrid .hex:nth-child(15):nth-child(19), #hexGrid .hexGrid .hex:nth-child(15):nth-child(24), #hexGrid .hexGrid .r-3.hex:nth-child(19), #hexGrid .hexGrid .r-3.hex:nth-child(24) {
-    -ms-grid-row: 6;
-        grid-row-start: 6;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-4.r-4, #hexGrid .hexGrid .r-4.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(16), #hexGrid .hexGrid .hex:nth-child(4):nth-child(17), #hexGrid .hexGrid .hex:nth-child(4):nth-child(18), #hexGrid .hexGrid .hex:nth-child(4):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(9):nth-child(16), #hexGrid .hexGrid .hex:nth-child(9):nth-child(17), #hexGrid .hexGrid .hex:nth-child(9):nth-child(18), #hexGrid .hexGrid .hex:nth-child(9):nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(14), #hexGrid .hexGrid .hex:nth-child(14):nth-child(16), #hexGrid .hexGrid .hex:nth-child(14):nth-child(17), #hexGrid .hexGrid .hex:nth-child(14):nth-child(18), #hexGrid .hexGrid .hex:nth-child(14):nth-child(20), #hexGrid .hexGrid .c-4.hex:nth-child(16), #hexGrid .hexGrid .hex:nth-child(16):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(17), #hexGrid .hexGrid .hex:nth-child(17):nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(18), #hexGrid .hexGrid .hex:nth-child(18):nth-child(24), #hexGrid .hexGrid .hex:nth-child(19), #hexGrid .hexGrid .c-4.hex:nth-child(20), #hexGrid .hexGrid .hex:nth-child(20):nth-child(24), #hexGrid .hexGrid .r-4.hex:nth-child(24) {
-    -ms-grid-row: 8;
-        grid-row-start: 8;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-4.r-5, #hexGrid .hexGrid .r-5.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(21), #hexGrid .hexGrid .hex:nth-child(4):nth-child(22), #hexGrid .hexGrid .hex:nth-child(4):nth-child(23), #hexGrid .hexGrid .hex:nth-child(4):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(9):nth-child(21), #hexGrid .hexGrid .hex:nth-child(9):nth-child(22), #hexGrid .hexGrid .hex:nth-child(9):nth-child(23), #hexGrid .hexGrid .hex:nth-child(9):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(14), #hexGrid .hexGrid .hex:nth-child(14):nth-child(21), #hexGrid .hexGrid .hex:nth-child(14):nth-child(22), #hexGrid .hexGrid .hex:nth-child(14):nth-child(23), #hexGrid .hexGrid .hex:nth-child(14):nth-child(25), #hexGrid .hexGrid .r-5.hex:nth-child(19), #hexGrid .hexGrid .hex:nth-child(19):nth-child(21), #hexGrid .hexGrid .hex:nth-child(19):nth-child(22), #hexGrid .hexGrid .hex:nth-child(19):nth-child(23), #hexGrid .hexGrid .hex:nth-child(19):nth-child(25), #hexGrid .hexGrid .c-4.hex:nth-child(21), #hexGrid .hexGrid .c-4.hex:nth-child(22), #hexGrid .hexGrid .c-4.hex:nth-child(23), #hexGrid .hexGrid .hex:nth-child(24), #hexGrid .hexGrid .c-4.hex:nth-child(25) {
-    -ms-grid-row: 10;
-        grid-row-start: 10;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-5, #hexGrid .hexGrid .hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(15), #hexGrid .hexGrid .hex:nth-child(20), #hexGrid .hexGrid .hex:nth-child(25) {
-    -ms-grid-column: 9;
-        grid-column-start: 9;
-    -ms-grid-column-span: 3;
-        grid-column-end: span 3;
-  }
-
-  #hexGrid .hexGrid .c-5.r-1, #hexGrid .hexGrid .c-5.hex:nth-child(1), #hexGrid .hexGrid .hex:nth-child(1):nth-child(10), #hexGrid .hexGrid .hex:nth-child(1):nth-child(15), #hexGrid .hexGrid .hex:nth-child(1):nth-child(20), #hexGrid .hexGrid .hex:nth-child(1):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(2), #hexGrid .hexGrid .hex:nth-child(2):nth-child(10), #hexGrid .hexGrid .hex:nth-child(2):nth-child(15), #hexGrid .hexGrid .hex:nth-child(2):nth-child(20), #hexGrid .hexGrid .hex:nth-child(2):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(3), #hexGrid .hexGrid .hex:nth-child(3):nth-child(10), #hexGrid .hexGrid .hex:nth-child(3):nth-child(15), #hexGrid .hexGrid .hex:nth-child(3):nth-child(20), #hexGrid .hexGrid .hex:nth-child(3):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(4), #hexGrid .hexGrid .hex:nth-child(4):nth-child(10), #hexGrid .hexGrid .hex:nth-child(4):nth-child(15), #hexGrid .hexGrid .hex:nth-child(4):nth-child(20), #hexGrid .hexGrid .hex:nth-child(4):nth-child(25), #hexGrid .hexGrid .hex:nth-child(5), #hexGrid .hexGrid .r-1.hex:nth-child(10), #hexGrid .hexGrid .r-1.hex:nth-child(15), #hexGrid .hexGrid .r-1.hex:nth-child(20), #hexGrid .hexGrid .r-1.hex:nth-child(25) {
-    -ms-grid-row: 1;
-        grid-row-start: 1;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-5.r-2, #hexGrid .hexGrid .r-2.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(6), #hexGrid .hexGrid .hex:nth-child(5):nth-child(7), #hexGrid .hexGrid .hex:nth-child(5):nth-child(8), #hexGrid .hexGrid .hex:nth-child(5):nth-child(9), #hexGrid .hexGrid .c-5.hex:nth-child(6), #hexGrid .hexGrid .hex:nth-child(6):nth-child(15), #hexGrid .hexGrid .hex:nth-child(6):nth-child(20), #hexGrid .hexGrid .hex:nth-child(6):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(7), #hexGrid .hexGrid .hex:nth-child(7):nth-child(15), #hexGrid .hexGrid .hex:nth-child(7):nth-child(20), #hexGrid .hexGrid .hex:nth-child(7):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(8), #hexGrid .hexGrid .hex:nth-child(8):nth-child(15), #hexGrid .hexGrid .hex:nth-child(8):nth-child(20), #hexGrid .hexGrid .hex:nth-child(8):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(9), #hexGrid .hexGrid .hex:nth-child(9):nth-child(15), #hexGrid .hexGrid .hex:nth-child(9):nth-child(20), #hexGrid .hexGrid .hex:nth-child(9):nth-child(25), #hexGrid .hexGrid .hex:nth-child(10), #hexGrid .hexGrid .r-2.hex:nth-child(15), #hexGrid .hexGrid .r-2.hex:nth-child(20), #hexGrid .hexGrid .r-2.hex:nth-child(25) {
-    -ms-grid-row: 3;
-        grid-row-start: 3;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-5.r-3, #hexGrid .hexGrid .r-3.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(11), #hexGrid .hexGrid .hex:nth-child(5):nth-child(12), #hexGrid .hexGrid .hex:nth-child(5):nth-child(13), #hexGrid .hexGrid .hex:nth-child(5):nth-child(14), #hexGrid .hexGrid .r-3.hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(10):nth-child(11), #hexGrid .hexGrid .hex:nth-child(10):nth-child(12), #hexGrid .hexGrid .hex:nth-child(10):nth-child(13), #hexGrid .hexGrid .hex:nth-child(10):nth-child(14), #hexGrid .hexGrid .c-5.hex:nth-child(11), #hexGrid .hexGrid .hex:nth-child(11):nth-child(20), #hexGrid .hexGrid .hex:nth-child(11):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(12), #hexGrid .hexGrid .hex:nth-child(12):nth-child(20), #hexGrid .hexGrid .hex:nth-child(12):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(13), #hexGrid .hexGrid .hex:nth-child(13):nth-child(20), #hexGrid .hexGrid .hex:nth-child(13):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(14), #hexGrid .hexGrid .hex:nth-child(14):nth-child(20), #hexGrid .hexGrid .hex:nth-child(14):nth-child(25), #hexGrid .hexGrid .hex:nth-child(15), #hexGrid .hexGrid .r-3.hex:nth-child(20), #hexGrid .hexGrid .r-3.hex:nth-child(25) {
-    -ms-grid-row: 5;
-        grid-row-start: 5;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-5.r-4, #hexGrid .hexGrid .r-4.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(16), #hexGrid .hexGrid .hex:nth-child(5):nth-child(17), #hexGrid .hexGrid .hex:nth-child(5):nth-child(18), #hexGrid .hexGrid .hex:nth-child(5):nth-child(19), #hexGrid .hexGrid .r-4.hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(10):nth-child(16), #hexGrid .hexGrid .hex:nth-child(10):nth-child(17), #hexGrid .hexGrid .hex:nth-child(10):nth-child(18), #hexGrid .hexGrid .hex:nth-child(10):nth-child(19), #hexGrid .hexGrid .r-4.hex:nth-child(15), #hexGrid .hexGrid .hex:nth-child(15):nth-child(16), #hexGrid .hexGrid .hex:nth-child(15):nth-child(17), #hexGrid .hexGrid .hex:nth-child(15):nth-child(18), #hexGrid .hexGrid .hex:nth-child(15):nth-child(19), #hexGrid .hexGrid .c-5.hex:nth-child(16), #hexGrid .hexGrid .hex:nth-child(16):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(17), #hexGrid .hexGrid .hex:nth-child(17):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(18), #hexGrid .hexGrid .hex:nth-child(18):nth-child(25), #hexGrid .hexGrid .c-5.hex:nth-child(19), #hexGrid .hexGrid .hex:nth-child(19):nth-child(25), #hexGrid .hexGrid .hex:nth-child(20), #hexGrid .hexGrid .r-4.hex:nth-child(25) {
-    -ms-grid-row: 7;
-        grid-row-start: 7;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .c-5.r-5, #hexGrid .hexGrid .r-5.hex:nth-child(5), #hexGrid .hexGrid .hex:nth-child(5):nth-child(21), #hexGrid .hexGrid .hex:nth-child(5):nth-child(22), #hexGrid .hexGrid .hex:nth-child(5):nth-child(23), #hexGrid .hexGrid .hex:nth-child(5):nth-child(24), #hexGrid .hexGrid .r-5.hex:nth-child(10), #hexGrid .hexGrid .hex:nth-child(10):nth-child(21), #hexGrid .hexGrid .hex:nth-child(10):nth-child(22), #hexGrid .hexGrid .hex:nth-child(10):nth-child(23), #hexGrid .hexGrid .hex:nth-child(10):nth-child(24), #hexGrid .hexGrid .r-5.hex:nth-child(15), #hexGrid .hexGrid .hex:nth-child(15):nth-child(21), #hexGrid .hexGrid .hex:nth-child(15):nth-child(22), #hexGrid .hexGrid .hex:nth-child(15):nth-child(23), #hexGrid .hexGrid .hex:nth-child(15):nth-child(24), #hexGrid .hexGrid .r-5.hex:nth-child(20), #hexGrid .hexGrid .hex:nth-child(20):nth-child(21), #hexGrid .hexGrid .hex:nth-child(20):nth-child(22), #hexGrid .hexGrid .hex:nth-child(20):nth-child(23), #hexGrid .hexGrid .hex:nth-child(20):nth-child(24), #hexGrid .hexGrid .c-5.hex:nth-child(21), #hexGrid .hexGrid .c-5.hex:nth-child(22), #hexGrid .hexGrid .c-5.hex:nth-child(23), #hexGrid .hexGrid .c-5.hex:nth-child(24), #hexGrid .hexGrid .hex:nth-child(25) {
-    -ms-grid-row: 9;
-        grid-row-start: 9;
-    -ms-grid-row-span: 2;
-        grid-row-end: span 2;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(1) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(2) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(3) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(4) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(5) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(6) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(7) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(8) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(9) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(10) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(11) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(12) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(13) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(14) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(15) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(16) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(17) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(18) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(19) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(20) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(21) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(22) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(23) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(24) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(25) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #hexGrid .hexGrid .hex:nth-child(1) {
-    background-image: url();
-  }
-
-  #hexGrid .hexGrid .hex {
-    -webkit-clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
-    clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
-    background-color: #bebebe;
-    background-size: cover;
-    font-size: 25px
-    /*margin: 0.4325em 0.5em;*/
-  }
-
-  #hexGrid .hexGrid .red {
-      background-color: #f02f47;
-      font-size: 25px;
-
-      /*animation: red 5s infinite;*/
-  }
-
-  #hexGrid .hexGrid .green {
-      background-color: #6efcc3;
-      font-size: 25px;
-
-      /*animation: green 5s infinite;*/
-
-  }
+.adminAction {
+  position: absolute;
+  bottom: 50px;
+  right: 0px;
+  width: 70px;
+  height: 180px;
+  border: 1px transparent solid;
+}
+
+.countdown{
+  color: white;
+}
+
+.updateScoreInput{
+  background-color: #3f51b50f;
+  border: 1px #3f51b50f solid;
+}
+
+.updateScoreBtn{
+  background-color: #3f51b50f;
+}
