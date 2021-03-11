@@ -24,7 +24,7 @@ export class BoardService {
   getBoard() {
     this.http.get<{ message: string, board: any[] }>(this.url + '/api/board/')
       .pipe(map(boarddata => {
-        console.log(boarddata);
+        // console.log(boarddata);
         return boarddata.board.map(boardResponse => {
           return {
             id: boardResponse._id,
@@ -43,18 +43,55 @@ export class BoardService {
   }
 
 
+  // get getBoardAfterFlush
+getBoardAfterFlush() {
+  this.http.get<{ message: string, board: any[] }>(this.url + '/api/board/')
+    .pipe(map(boarddata => {
+      // console.log(boarddata);
+      return boarddata.board.map(boardResponse => {
+        return {
+          id: boardResponse._id,
+          letter: boardResponse.letter,
+          color: boardResponse.color,
+          fontcolor: boardResponse.fontcolor,
+
+        }
+      })
+    }))
+    .subscribe(responseData => {
+
+
+      const newArray = responseData;
+
+      var m = newArray.length, t, i;
+
+      while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = newArray[m];
+        newArray[m] = newArray[i];
+        newArray[i] = t;
+      }
+
+
+
+      this.board = newArray;
+      this.boardUpadted.next([...this.board]);
+    });
+
+}
   addBoard(letters: string, colors: string, fontcolors: string ) {
     const board: Board = {  id: null, letter: letters, color: colors, fontcolor: fontcolors};
     this.http.post(this.url + '/api/board/', board)
      .subscribe( Response => {
-        console.log(Response);
+        // console.log(Response);
      });
 
   }
 
 
   updateboardItem(id: any, letter: string, color: string, fontcolor: string){
-const boardItem = {id: id, letter: letter, color: color, fontcolor: fontcolor};
+const boardItem = {id: id, letter: letter, color: color, fontcolor: 'white'};
+console.log(boardItem);
 this.http.put(this.url + '/api/board/'+id, boardItem).subscribe(Response => {
   const updatedBoardItem = [...this.board];
   const oldItemIndex = updatedBoardItem.findIndex(p => p.id === boardItem.id);
@@ -66,24 +103,12 @@ this.http.put(this.url + '/api/board/'+id, boardItem).subscribe(Response => {
 
 
 
+
   updateArray(array: any) {
-  console.log('ana');
+
   const color = 'gray';
   this.http.put(this.url  + '/api/board/', color).subscribe(Response => {
-const newArray = this.board;
-
-    var m = newArray.length, t, i;
-
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      t = newArray[m];
-      newArray[m] = newArray[i];
-      newArray[i] = t;
-    }
-
-
-    this.board = newArray;
-    this.getBoradUpdated.next([...this.board]);
+    this.getBoardAfterFlush();
   });
 
 

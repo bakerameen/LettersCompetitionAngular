@@ -26,8 +26,8 @@ export class TeamJoinComponent implements OnInit, OnDestroy {
     this.router.paramMap.subscribe((paramMap: ParamMap) => {
       this.teamId = paramMap.get('teamId');
       this.teamService.getTeam(this.teamId).subscribe( (teamData) => {
-console.log(teamData);
-       this.teams = { id: teamData._id, name: teamData.name, description: teamData.description, fPlayer: teamData.fPlayer, sPlayer: teamData.sPlayer, score: teamData.score };
+// console.log(teamData);
+       this.teams = { id: teamData._id, name: teamData.name, description: teamData.description, fPlayer: teamData.fPlayer, sPlayer: teamData.sPlayer, tPlayer: teamData.tPlayer, foPlayer: teamData.foPlayer, score: teamData.score };
       });
 
     });
@@ -47,7 +47,7 @@ console.log(teamData);
     //   return;
     // }
 
-this.teamService.addPlayers(this.teamId, this.teams.name, this.teams.description, playerForm.value.firstPlayer,  playerForm.value.secondPlayer, this.teams.score );
+this.teamService.addPlayers(this.teamId, this.teams.name, this.teams.description, playerForm.value.firstPlayer,  playerForm.value.secondPlayer, playerForm.value.thiredPlayer, playerForm.value.fourthPlayer, this.teams.score );
 
   }
 

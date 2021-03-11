@@ -1,0 +1,18 @@
+  <div >
+    <div class="board" >
+      <div id="hexGrid">
+        <div class="hexCrop">
+          <div class="hexGrid">
+            <div class="hex" *ngFor="let item of Boards; let i = index"
+            >
+            <div class="row">
+              <div class="col-12"><input value="{{item.letter}}" (change)="onChangeEvent($event, item.id)"   style="width: 26px;" ></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>

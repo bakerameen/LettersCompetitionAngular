@@ -42,7 +42,7 @@ export class TeamCreateComponent implements OnInit, OnDestroy {
         this.mode = 'edit';
         this.teamId = paramMap.get('teamId');
         this.teamservice.getTeam(this.teamId).subscribe(teamData => {
-          this.team = { id: teamData._id, name: teamData.name, description: teamData.description, fPlayer: teamData.fPlayer, sPlayer: teamData.sPlayer, score: teamData.score };
+          this.team = { id: teamData._id, name: teamData.name, description: teamData.description, fPlayer: teamData.fPlayer, sPlayer: teamData.sPlayer, tPlayer: teamData.tPlayer, foPlayer: teamData.foPlayer, score: teamData.score };
           this.form.setValue({
             name: this.team.name,
             teamDescription: this.team.description

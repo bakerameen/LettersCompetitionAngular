@@ -10,6 +10,7 @@ import { MatchComponent } from './components/match/match.component';
 import { TeamCreateComponent } from './components/teams/team-create/team-create.component';
 import { TeamJoinComponent } from './components/teams/team-join/team-join.component';
 import { TeamListComponent } from './components/teams/team-list/team-list.component';
+import { BoardUpdateComponent } from './components/board/board-update/board-update.component';
 
 
 
@@ -21,14 +22,16 @@ const routes: Routes = [
   { path: 'teamedit/:teamId', component: TeamCreateComponent, canActivate: [AuthGuard]},
   { path: 'teamjoin/:teamId', component: TeamJoinComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent},
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard]},
   { path: 'match', component: MatchComponent},
-  { path: 'board', component: BoardCreateComponent}
+  { path: 'board', component: BoardCreateComponent, canActivate: [AuthGuard]},
+  { path: 'boardUpdate', component: BoardUpdateComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+imports: [RouterModule.forRoot(routes)],
+
+exports: [RouterModule],
   providers: [AuthGuard]
 })
 export class AppRoutingModule { }

@@ -5,12 +5,16 @@
       <span class="naseejColor"> نسيج </span>
     </a>
 
+
+
   <span class="spacer"></span>
   <ul>
+    <li *ngIf="userIsAuthenticated" class="nameCss">  {{userName}}</li>
     <li *ngIf="userIsAuthenticated && userName === 'Admin'"><a mat-button routerLink="/teams" routerLinkActive="mat-accent">Teams</a></li>
     <li *ngIf="userIsAuthenticated && userName === 'Admin'"><a mat-button routerLink="/match" routerLinkActive="mat-accent">Match</a></li>
-    <li *ngIf="!userIsAuthenticated"><a mat-button routerLink="/login" routerLinkActive="mat-accent">تسجيل الدخول</a></li>
-    <li *ngIf="!userIsAuthenticated && userName === 'Admin'"><a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign up</a></li>
+    <li *ngIf="!userIsAuthenticated" class="loginBtn"><a mat-button routerLink="/login" routerLinkActive="mat-accent">تسجيل الدخول</a></li>
+    <li *ngIf="userIsAuthenticated && userName === 'Admin'"><a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign up</a></li>
+    <li *ngIf="userIsAuthenticated && userName === 'Admin'"><a mat-button routerLink="/boardUpdate" routerLinkActive="mat-accent">Board</a></li>
     <li *ngIf="userIsAuthenticated" (click)="onLogout()"><button mat-button >Logout</button></li>
   </ul>
 </mat-toolbar>

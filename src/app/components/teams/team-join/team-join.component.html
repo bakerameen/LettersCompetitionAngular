@@ -28,6 +28,25 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Thired Player</mat-label>
+    <mat-select name="thiredPlayer" ngModel #tPlayerInput="ngModel">
+      <mat-option *ngFor="let tplayer of Players" [value]="tplayer.name">
+        {{ tplayer.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fourth Player</mat-label>
+    <mat-select name="fourthPlayer" ngModel #fPlayerInput="ngModel">
+      <mat-option *ngFor="let fplayer of Players" [value]="fplayer.name">
+        {{ fplayer.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
   <div class="example-button-container">
     <button type="submit" mat-raised-button color="accent">Add Players</button>
   </div>

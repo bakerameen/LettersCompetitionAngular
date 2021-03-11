@@ -7,12 +7,21 @@
   color: #ff344d  !important ;
     font-size: 1.5rem;
     font-weight: bold;
+
+    @media (max-width: 767px) {
+      font-size: 1rem;
+    }
 }
 
 .naseejFont{
   color: #fff  !important ;
     font-size: 1.5rem;
     font-weight: bold;
+
+    @media (max-width: 767px) {
+      font-size: 1rem;
+    }
+
 }
 ul {
   display: flex;
@@ -29,6 +38,40 @@ a {
 .spacer {
   flex: 1 1 auto
 }
+
+.loginBtn{
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 18px;
+    display: inline-block;
+    color: #fff;
+    border: 0px;
+    border-radius: 50px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    background-image: -webkit-gradient(linear, right top, left top, from(#ff344d), to(#ff344d));
+    background-image: -webkit-linear-gradient(right, #ff344d, #ff344d);
+    background-image: -o-linear-gradient(right, #ff344d, #ff344d);
+    background-image: linear-gradient(to left, #ff344d, #ff344d);
+}
+
+.nameCss {
+  color: #ff344d;
+
+  @media (max-width: 767px) {
+    color: #ff344d;
+    font-size: 1rem;
+  }
+
+  // @media (min-width: 768px) {
+  //   color: #ff344d;
+  // }
+
+}
+
 
 
 

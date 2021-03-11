@@ -20,7 +20,7 @@ html,body{
     border: 1px solid #0b122e;
     padding: 10px;
     height: 60px;
-    border-top: green calc(2px + 0.1vw) solid;
+
     border-bottom: green calc(2px + 0.1vw) solid;
     border-right: green calc(2px + 0.1vw) solid;
     border-left: green calc(2px + 0.1vw) solid;
@@ -37,11 +37,52 @@ html,body{
     border: 1px solid #0b122e;
     padding: 10px;
     height: 60px;
-    border-top: red calc(2px + 0.1vw) solid;
+
     border-bottom: red calc(2px + 0.1vw) solid;
     border-right: red calc(2px + 0.1vw) solid;
     border-left: red calc(2px + 0.1vw) solid;
 }
+
+
+.teamInfo{
+  border: 0px white solid;
+  height: 35px !important;
+}
+
+.teamInfo:first-child {
+  margin: auto;
+    width: 50%;
+    border: 0px solid #0b122e;
+    border-radius: 10px;
+    padding: 30px 30px 29px;
+
+    transition: all 0.3s ease-in;
+    border: 0px solid #0b122e;
+    padding: 10px;
+    height: 30px;
+    border-top: green calc(2px + 0.1vw) solid;
+
+    border-right: green calc(2px + 0.1vw) solid;
+    border-left: green calc(2px + 0.1vw) solid;
+}
+
+.teamInfo:nth-child(2) {
+    margin: auto;
+    width: 50%;
+    border: 0px solid #0b122e;
+    border-radius: 10px;
+    padding: 30px 30px 29px;
+    box-shadow: 0px 10px 15px 0px rgb(0 0 0 / 40%);
+    transition: all 0.3s ease-in;
+    border: 0px solid #0b122e;
+    padding: 10px;
+    height: 30px;
+    border-top: red calc(2px + 0.1vw) solid;
+
+    border-right: red calc(2px + 0.1vw) solid;
+    border-left: red calc(2px + 0.1vw) solid;
+}
+
 
 .teamName{
   color: white;
@@ -257,10 +298,10 @@ html,body{
 }
 
 .updateScoreInput{
-  background-color: #3f51b50f;
-  border: 1px #3f51b50f solid;
+  background-color: #1d2a2f;
+  border: 1px #1d2a2f solid;
 }
 
 .updateScoreBtn{
-  background-color: #3f51b50f;
+  background-color: #1d2a2f;
 }

@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 // components
 import { AppComponent } from './app.component';
@@ -40,6 +42,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CountdownModule } from 'ngx-countdown';
 import { BoardComponent } from './components/board/board.component';
 import { BoardCreateComponent } from './components/board/board-create/board-create.component';
+import { BoardUpdateComponent } from './components/board/board-update/board-update.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,7 @@ import { BoardCreateComponent } from './components/board/board-create/board-crea
     DialogUserInformationComponent,
     BoardComponent,
     BoardCreateComponent,
-
+    BoardUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,9 @@ import { BoardCreateComponent } from './components/board/board-create/board-crea
     MatBadgeModule,
     MatSnackBarModule,
     AppRoutingModule,
-    CountdownModule
+    CountdownModule,
+    FlexLayoutModule,
+    MatSidenavModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true},

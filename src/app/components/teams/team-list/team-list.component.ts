@@ -30,7 +30,8 @@ export class TeamListComponent implements OnInit, OnDestroy {
       .subscribe((teams: Team[]) => {
         this.isLoading = false;
         this.teams = teams;
-        console.log('baer' + JSON.stringify(teams));
+        // console.log('baer' + JSON.stringify(teams));
+        console.log(this.teams);
       });
       this.userIsAuthenticated = this.authService.getIsAuth();
       this.authListenerSub = this.authService.geAuthStatusListener().subscribe(isAuthenticated => {
@@ -40,7 +41,7 @@ export class TeamListComponent implements OnInit, OnDestroy {
   }
 
   onAddMatch(team) {
-      this.matcService.addMatch(team.id, team.name, team.description, team.fPlayer, team.sPlayer, team.score);
+      this.matcService.addMatch(team.id, team.name, team.description, team.fPlayer, team.sPlayer, team.tPlayer, team.foPlayer, team.score);
   }
 
 
@@ -54,7 +55,7 @@ export class TeamListComponent implements OnInit, OnDestroy {
   }
 
   onChangePage(pageData: PageEvent) {
-console.log(pageData);
+  // console.log(pageData);
   }
 
 }

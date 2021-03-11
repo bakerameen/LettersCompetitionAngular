@@ -16,7 +16,9 @@ export class MatchService {
 
   private url: string = 'http://localhost:8080';
   private match: Match[] = [];
+  private matchScore: Match[] = [];
   private matchUpadted = new Subject<Match[]>();
+  private matchUpadtedScore = new Subject<Match[]>();
 
   constructor(private http: HttpClient) { }
 
@@ -28,8 +30,9 @@ export class MatchService {
 getMatches() {
    this.http.get<{message: string, matches: any}>(this.url + '/api/match/')
    .pipe(map(matchdata => {
-     console.log(matchdata)
+
      return matchdata.matches.map(matchResponse => {
+
        return {
        id: matchResponse._id,
       teamId: matchResponse.teamId,
@@ -37,6 +40,8 @@ getMatches() {
       description: matchResponse.description,
       fPlayer: matchResponse.fPlayer,
       sPlayer: matchResponse.sPlayer,
+      tPlayer: matchResponse.tPlayer,
+      foPlayer: matchResponse.foPlayer,
       score: matchResponse.score
     }
      })
@@ -49,10 +54,38 @@ getMatches() {
 }
 
 
-  // add match
-  addMatch(teamId: string, teamName: string, teamdescription: string, fPlayer: string, sPlayer: string, score: number) {
-    const match: Match = { id: null, teamId: teamId, teamName: teamName, description: teamdescription, fPlayer: fPlayer, sPlayer: sPlayer, score: score };
 
+// get matches
+getMatchesScores() {
+  this.http.get<{message: string, matches: any}>(this.url + '/api/match/')
+  .pipe(map(matchdata => {
+
+    return matchdata.matches.map(matchResponse => {
+
+      return {
+      id: matchResponse._id,
+     teamId: matchResponse.teamId,
+     teamName: matchResponse.teamName,
+     description: matchResponse.description,
+     fPlayer: matchResponse.fPlayer,
+     sPlayer: matchResponse.sPlayer,
+     tPlayer: matchResponse.tPlayer,
+     foPlayer: matchResponse.foPlayer,
+     score: matchResponse.score
+   }
+    })
+  }))
+  .subscribe( responseData => {
+   this.matchScore = responseData;
+   this.matchUpadtedScore.next([...this.matchScore]);
+ })
+
+}
+
+  // add match
+  addMatch(teamId: string, teamName: string, teamdescription: string, fPlayer: string, sPlayer: string, tPlayer: string, foPlayer: string, score: number) {
+    const match: Match = { id: null, teamId: teamId, teamName: teamName, description: teamdescription, fPlayer: fPlayer, sPlayer: sPlayer, tPlayer: tPlayer, foPlayer: foPlayer, score: score };
+console.log(match);
      this.http.post<{ message: string, matchId: string }>(this.url + '/api/match/', match)
        .subscribe(responseData => {
 
@@ -64,15 +97,16 @@ getMatches() {
   }
 
 // matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName
-  updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName ) {
+  updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, tPlayer, foPlayer, teamName ) {
 
-    const teamUpdate = {id: matchId, score: scoreVal, teamId: teamId, description:description, fPlayer: fPlayer, sPlayer: sPlayer, teamName: teamName };
+    const teamUpdate = {id: matchId, score: scoreVal, teamId: teamId, description:description, fPlayer: fPlayer, sPlayer: sPlayer, tPlayer: tPlayer, foPlayer: foPlayer, teamName: teamName };
 this.http.put<{message: Message, match: any}>(this.url + '/api/match/' + matchId, teamUpdate).subscribe(Response => {
   const updatedMatch = [...this.match];
   const oldTeamIndex = updatedMatch.findIndex(p => p.id === teamUpdate.id);
    updatedMatch[oldTeamIndex] = teamUpdate;
    this.match = updatedMatch;
    this.matchUpadted.next([...this.match]);
+
 })
   }
 
@@ -80,6 +114,14 @@ this.http.put<{message: Message, match: any}>(this.url + '/api/match/' + matchId
   getMatchUpdateListener() {
     return this.matchUpadted.asObservable();
   }
+
+
+  getMatchScoreUpdateListener() {
+    return this.matchUpadtedScore.asObservable();
+  }
+
+
+
 
 
 }

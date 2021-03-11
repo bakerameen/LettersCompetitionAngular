@@ -1,4 +1,3 @@
-
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <a mat-raised-button routerLink="/teamcreate" routerLinkActive="mat-accent">New Team</a>
 <p></p>
@@ -9,21 +8,19 @@
         {{team.name}}
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <p>{{team.description}}</p>
+    <!-- <p>{{team.description}}</p> -->
     <p>{{team.fPlayer}} </p>
     <p>- {{team.sPlayer}}</p>
+    <p>- {{team.tPlayer}}</p>
+    <p>{{team.foPlayer}}</p>
     <p>{{team.score}}</p>
     <mat-action-row *ngIf="userIsAuthenticated">
-      <a  title="Add Players" mat-button color="warn" [routerLink]="['/teamjoin', team.id]">Add Players</a>
+      <a title="Add Players" mat-button color="warn" [routerLink]="['/teamjoin', team.id]">Add Players</a>
       <button mat-button color="warn" (click)="onAddMatch(team)">Join Match</button>
-      <a mat-button  color="primary" [routerLink]="['/teamedit', team.id]">EDITE</a>
+      <a mat-button color="primary" [routerLink]="['/teamedit', team.id]">EDITE</a>
       <button mat-button color="warn" (click)="onDelete(team.id)">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-card>
 <!-- <mat-paginator [length]="totalTeams" [pageSize]="teamPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)"></mat-paginator> -->
 <p class="info-text mat-body-1" *ngIf="teams.length <= 0 && !isLoading">No teams added yet!</p>
-
-
-
-

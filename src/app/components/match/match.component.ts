@@ -18,7 +18,9 @@ export class MatchComponent implements OnInit, OnDestroy {
 
 
   matches: Match[] = [];
+  matchesScore: Match[] = [];
   subMatch: Subscription;
+  subMatchScore: Subscription;
   users: Answer[] = [];
   answerSub: Subscription;
   date: Date;
@@ -39,17 +41,29 @@ export class MatchComponent implements OnInit, OnDestroy {
    });
 
     this.refreshData();
+    // this.refreshScore();
     const currentDate = new Date();
     this.matchService.getMatches();
+    this.matchService.getMatchesScores();
+
     this.subMatch = this.matchService.getMatchUpdateListener().subscribe(response => {
+
       this.matches = response;
+
     });
+
+this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(response => {
+  this.matchesScore = response;
+});
 
     this.authService.getUserClickedCredential();
     this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
       this.users = Response;
       this.date = currentDate;
     });
+
+
+
   }
 
 
@@ -68,16 +82,23 @@ export class MatchComponent implements OnInit, OnDestroy {
   // }
 
   // match.id, scoreVal, match.teamId, match.description, match.fPlayer, match.sPlayer, match.teamName
-  updateScore(matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName) {
-    this.matchService.updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, teamName);
+  updateScore(matchId, scoreVal, teamId, description, fPlayer, sPlayer, tPlayer, foPlayer, teamName) {
+
+    this.matchService.updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, tPlayer, foPlayer, teamName);
     this.matchService.getMatchUpdateListener()
      .subscribe( Response => {
-       console.log(Response);
+        console.log(scoreVal);
+        this.scoreVal = scoreVal;
      });
   }
 
 
   onHandRaised() {
+    const audio = new Audio();
+    audio.src = '/../../../assets/audio/marimba.mp3';
+    audio.load();
+    audio.play();
+
     this.btnClicked = true;
     const currentDate = new Date();
     //  this.authService.addUserClickedCredential();
@@ -135,15 +156,37 @@ export class MatchComponent implements OnInit, OnDestroy {
             //   });
           });
 
-        }, 2000);
+          this.matchService.getMatchesScores();
+          this.subMatch = this.matchService.getMatchScoreUpdateListener().subscribe(response => {
+            this.matchesScore = response;
+          });
+
+
+        }, 1000);
 
 
     } else {
-      console.log('fff')
       clearInterval(this.dataRefresher);
     }
 
   }
+
+  // refreshScore() {
+  //   if (this.isShowTimer === true) {
+  //     this.dataRefresher =
+  //       setInterval(() => {
+  //         this.matchService.getMatches();
+
+
+  //       }, 2000);
+
+
+  //   } else {
+
+  //     clearInterval(this.dataRefresher);
+  //   }
+
+  // }
 
   // openSnackBar(message: string, action: string) {
   //   this._snackBar.open(message, action, {
@@ -160,6 +203,7 @@ export class MatchComponent implements OnInit, OnDestroy {
 
     this.subMatch.unsubscribe();
     this.answerSub.unsubscribe();
+    this.subMatchScore.unsubscribe();
 
     if (this.dataRefresher) {
 
