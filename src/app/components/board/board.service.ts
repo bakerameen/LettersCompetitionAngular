@@ -13,7 +13,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 })
 
 export class BoardService {
-  private url: string = 'http://localhost:8080';
+  private url: string = '';
   private board: Board[] = [];
   private boardUpadted = new Subject<Board[]>();
   private getBoradUpdated = new Subject<any>();

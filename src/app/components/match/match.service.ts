@@ -14,11 +14,13 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class MatchService {
 
-  private url: string = 'http://localhost:8080';
+  private url: string = '';
   private match: Match[] = [];
+  private leftTimer;
   private matchScore: Match[] = [];
   private matchUpadted = new Subject<Match[]>();
   private matchUpadtedScore = new Subject<Match[]>();
+  private leftTimerUpdated = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -82,7 +84,11 @@ getMatchesScores() {
 
 }
 
-  // add match
+
+
+
+
+// add match
   addMatch(teamId: string, teamName: string, teamdescription: string, fPlayer: string, sPlayer: string, tPlayer: string, foPlayer: string, score: number) {
     const match: Match = { id: null, teamId: teamId, teamName: teamName, description: teamdescription, fPlayer: fPlayer, sPlayer: sPlayer, tPlayer: tPlayer, foPlayer: foPlayer, score: score };
 console.log(match);
@@ -111,6 +117,12 @@ this.http.put<{message: Message, match: any}>(this.url + '/api/match/' + matchId
   }
 
 
+  getTimeleft(timeLeft) {
+    this.leftTimer = timeLeft;
+    // this.leftTimerUpdated.next([...this.leftTimer]);
+    console.log(this.leftTimer);
+  }
+
   getMatchUpdateListener() {
     return this.matchUpadted.asObservable();
   }
@@ -120,6 +132,9 @@ this.http.put<{message: Message, match: any}>(this.url + '/api/match/' + matchId
     return this.matchUpadtedScore.asObservable();
   }
 
+  // getleftTimerUpdated() {
+  //   return this.leftTimerUpdated.asObservable();
+  // }
 
 
 

@@ -30,11 +30,17 @@ export class MatchComponent implements OnInit, OnDestroy {
   btnClicked = false;
   Boards: Board[] = [];
   userName: string;
+  timerLeft;
+  count = 10;
+  timeout;
 
   constructor(private matchService: MatchService, private authService:
     AuthService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+
+
+
    this.userName = this.authService.getUserName();
    this.authService.geAuthStatusListener().subscribe( isAuthenticated => {
     this.userName = this.authService.getUserName();
@@ -110,7 +116,15 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
       this.date = currentDate;
     });
 
+    // this.timeout = setInterval(() => {
+    //   if (this.count > 0) {
+    //     this.count -= 1;
+    //   } else {
+    //     clearInterval(this.timeout);
+    //   }
+    // }, 500);
 
+    this.refreshData();
 
     // this.clickStatus = true;
 
@@ -141,6 +155,9 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
   }
 
 
+
+
+
   refreshData() {
 
     const currentDate = new Date();
@@ -161,6 +178,7 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
             this.matchesScore = response;
           });
 
+          this.count -= 1;
 
         }, 1000);
 

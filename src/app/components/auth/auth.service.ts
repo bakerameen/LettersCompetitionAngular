@@ -11,7 +11,7 @@ import { Answer } from '../match/answer.model';
 })
 export class AuthService {
 
-  private url: string = 'http://localhost:8080';
+  private url: string = '';
   private isAuthenticated = false;
   private token: string;
   private authStatusListener = new Subject<boolean>();

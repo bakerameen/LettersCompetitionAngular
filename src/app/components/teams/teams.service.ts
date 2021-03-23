@@ -11,7 +11,7 @@ import { Match } from '../match/match.model';
 })
 export class TeamsService {
   // http://localhost:8080
-  private url: string = 'http://localhost:8080';
+  private url: string = '';
   private teams: Team[] = [];
   private match: Match[] = [];
   private teamsUpdated = new Subject<Team[]>();
