@@ -9,7 +9,7 @@
     <b>{{user.userName}}</b>
     <!-- Hand raised by <b> -  -</b> {{date}} -->
 	</div>
-  <countdown  class="countdown" #cd [config]="{leftTime: 7, demand: true}"></countdown>
+  <countdown *ngIf="userName === 'Admin'"   class="countdown" #cd [config]="{leftTime: 7, demand: true}"></countdown>
   <button *ngIf="userName === 'Admin'"  (click)="cd.resume()"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
      Time
   </button>
