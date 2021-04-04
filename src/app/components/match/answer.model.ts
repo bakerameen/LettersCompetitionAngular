@@ -1,5 +1,6 @@
 export interface Answer {
   _id: string;
   userName: string;
-  userCliceked: boolean
+  userCliceked: boolean,
+  timerClass: string
   }

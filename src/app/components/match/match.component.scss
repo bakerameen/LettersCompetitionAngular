@@ -305,3 +305,51 @@ html,body{
 .updateScoreBtn{
   background-color: #1d2a2f;
 }
+
+
+
+
+button:disabled,
+button[disabled]{
+  // height:50px;
+  // width:50px;
+  // background:red;
+  // -webkit-transform: rotate(45deg);
+  // transform:  rotate(45deg);
+  // animation-name:example;
+  // animation-delay:0s;
+  // animation-duration:0.5s;
+  // animation-iteration-count:4;
+  // animation-fill-mode:forwards;
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+    background-color: yellow;
+
+  }
+  to {
+    transform: rotate(359deg);
+    background-color: blue;
+  }
+}
+
+/* The animation code */
+@keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
+/* The element to apply the animation to */
+.animationCss {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  // animation-name: example;
+  // animation-duration: 4s;
+}
+

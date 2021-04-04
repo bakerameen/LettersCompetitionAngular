@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Match } from './match.model';
@@ -20,12 +20,15 @@ export class MatchComponent implements OnInit, OnDestroy {
   matches: Match[] = [];
   matchesScore: Match[] = [];
   subMatch: Subscription;
+  subTime: Subscription;
   subMatchScore: Subscription;
   users: Answer[] = [];
   answerSub: Subscription;
   date: Date;
   dataRefresher: any;
+  timeRefresher: any;
   isShowTimer = true;
+  isShowTimerExpired = true;
   scoreVal = 0;
   btnClicked = false;
   Boards: Board[] = [];
@@ -33,11 +36,19 @@ export class MatchComponent implements OnInit, OnDestroy {
   timerLeft;
   count = 10;
   timeout;
+  animationClass = "notAnimated";
+  // timerId;
+  disbale: Subscription;
 
   constructor(private matchService: MatchService, private authService:
     AuthService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+
+    // this.authService.getdisabled();
+    // this.disbale = this.authService.getdisbaleListener().subscribe( response => {
+    //  this.disbale = response;
+    //  });
 
 
 
@@ -47,6 +58,7 @@ export class MatchComponent implements OnInit, OnDestroy {
    });
 
     this.refreshData();
+    this.refreshTime();
     // this.refreshScore();
     const currentDate = new Date();
     this.matchService.getMatches();
@@ -93,28 +105,62 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
     this.matchService.updateMatch(matchId, scoreVal, teamId, description, fPlayer, sPlayer, tPlayer, foPlayer, teamName);
     this.matchService.getMatchUpdateListener()
      .subscribe( Response => {
-        console.log(scoreVal);
+
         this.scoreVal = scoreVal;
      });
   }
 
 
   onHandRaised() {
+
+    // this.authService.updateAnimation();
+    // this.authService.getAnimation();
+    // this.authService.getAnimationUpdateListener().subscribe(animation => {
+    //   this.animationClass = animation;
+
+    // });
+
     const audio = new Audio();
     audio.src = '/../../../assets/audio/marimba.mp3';
     audio.load();
     audio.play();
 
-    this.btnClicked = true;
-    const currentDate = new Date();
+    // // this.btnClicked = true;
+    // const currentDate = new Date();
+    // const currentTime = currentDate.getSeconds();
+    // const currentTimes = currentTime + 7;
+
     //  this.authService.addUserClickedCredential();
     this.authService.updateUserClickedCredential();
-    this.authService.getUserClickedCredential();
-    this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
 
-      this.users = Response;
-      this.date = currentDate;
-    });
+
+const i = setInterval(() => {
+console.log('Timer Start : ');
+
+    } , 1000);
+setTimeout(() => {
+      clearInterval( i );
+      console.log('Timer Finished :');
+      this.onReleasedClickedByAdmin();
+    }, 7000);
+
+
+
+    // this.authService.getUserClickedCredential();
+    //this.answerSub = this.authService.getAnswerUpdateListener().subscribe(Response => {
+      //this.users = Response;
+      //console.log('toto', this.users);
+      // this.date = currentDate;
+
+    // });
+
+
+
+        // repeat with the interval of 2 seconds
+// let timerId = setInterval(() =>  1000);
+// console.log(timerId);
+// // after 5 seconds stop
+// setTimeout(() => { clearInterval(timerId);  }, 7000);
 
     // this.timeout = setInterval(() => {
     //   if (this.count > 0) {
@@ -124,7 +170,7 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
     //   }
     // }, 500);
 
-    this.refreshData();
+   // this.refreshData();
 
     // this.clickStatus = true;
 
@@ -150,7 +196,20 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
     // this.clickStatus = false;
     this.date = null;
     this.isShowTimer = !this.isShowTimer;
+    this.isShowTimerExpired = !this.isShowTimerExpired;
     this.btnClicked = false;
+
+    const audio = new Audio();
+    audio.src = '/../../../assets/audio/timeout.mp3';
+    audio.load();
+    audio.play();
+
+    //timer
+    // this.authService.getAnimation();
+    // this.authService.getAnimationUpdateListener().subscribe(animation => {
+    //   this.animationClass = animation;
+
+    // });
 
   }
 
@@ -178,6 +237,15 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
             this.matchesScore = response;
           });
 
+
+
+          //timer
+    // this.animationClass = this.authService.getAnimation();
+    // this.authService.getAnimationUpdateListener().subscribe(animation => {
+    //   this.animationClass = this.animationClass;
+    //   console.log('toto');
+    // });
+
           this.count -= 1;
 
         }, 1000);
@@ -188,6 +256,59 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
     }
 
   }
+
+
+
+  refreshTime() {
+
+//     if (this.isShowTimerExpired === true) {
+// // Hello is alerted repeatedly after every 3 seconds
+// let timerId= setInterval(() =>
+//  {
+//    this.authService.getAnimation();
+//     this.authService.getAnimationUpdateListener().subscribe(animation => {
+//       this.animationClass = animation;
+//     });
+//   }
+
+//  , 1000);
+
+// // Clear intervals after 6 sec with the timer id
+// setTimeout(() => {
+//   this.authService.getAnimation();
+//   this.authService.getAnimationUpdateListener().subscribe(animation => {
+//     this.animationClass = 'notAnimated';
+//   });
+//   clearInterval(timerId);
+
+
+// }, 7000);
+
+// }
+    if (this.isShowTimerExpired === true) {
+      this.timeRefresher =
+        setInterval(() => {
+          //timer
+
+          this.authService.getAnimation();
+          this.subTime = this.authService.getAnimationUpdateListener().subscribe(animation => {
+            this.animationClass = animation;
+
+          });
+
+           // setTimeout(() => { clearInterval( this.timeRefresher ); }, 7000);
+
+        }, 1000);
+
+
+
+
+    } else {
+      clearInterval(this.timeRefresher);
+    }
+
+  }
+
 
   // refreshScore() {
   //   if (this.isShowTimer === true) {
@@ -221,11 +342,16 @@ this.subMatchScore = this.matchService.getMatchScoreUpdateListener().subscribe(r
 
     this.subMatch.unsubscribe();
     this.answerSub.unsubscribe();
+    this.subTime.unsubscribe();
+    this.disbale.unsubscribe();
     this.subMatchScore.unsubscribe();
 
     if (this.dataRefresher) {
-
       clearInterval(this.dataRefresher);
+    }
+
+    if(this.timeRefresher) {
+      clearInterval(this.timeRefresher);
     }
 
   }

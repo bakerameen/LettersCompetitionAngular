@@ -1,3 +1,4 @@
+
 <div class = "centered">
 </div>
 <div class = "notification active">
@@ -9,18 +10,19 @@
     <b>{{user.userName}}</b>
     <!-- Hand raised by <b> -  -</b> {{date}} -->
 	</div>
-  <countdown *ngIf="userName === 'Admin'"   class="countdown" #cd [config]="{leftTime: 7, demand: true}"></countdown>
+  <!-- <countdown   class="countdown" #cd [config]="{leftTime: 7, demand: true}"></countdown>
   <button *ngIf="userName === 'Admin'"  (click)="cd.resume()"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
      Time
-  </button>
+  </button> -->
   <div>
 
   </div>
 
+
 </div>
 
 
-<div class="container-fluid" *ngIf="userName === 'Admin'">
+ <div class="container-fluid" *ngIf="userName === 'Admin'">
   <div class="row">
     <div class="col-xl-6 col-lg-6 col-sm-6 teamInfo" *ngFor="let match of matchesScore | slice:0:2; let i=index">
       <div class="teamName text-right">
@@ -33,8 +35,8 @@
   <div >
 
     <div class="palyers text-right">
-      <p >  {{match.fPlayer}} -   {{match.sPlayer}} - {{match.tPlayer}} - {{match.foPlayer}}</p>
-
+      <p >  {{match.fPlayer}} -   {{match.sPlayer}}</p>
+      <!-- <p >  {{match.fPlayer}} -   {{match.sPlayer}} - {{match.tPlayer}} - {{match.foPlayer}}</p> -->
 <p *ngIf="userName === 'Admin'">
       <input [(ngModel)]="scoreVal" class="updateScoreInput" >
       <button mat-raised-button class="updateScoreBtn"  (click)="updateScore(match.id, scoreVal, match.teamId, match.description, match.fPlayer, match.sPlayer, match.tPlayer, match.foPlayer, match.teamName)">Score</button>
@@ -49,7 +51,7 @@
 <!-- ngIf Admin-->
 <div class="adminAction" *ngIf="userName === 'Admin'">
   <div class="">
-    <button mat-fab color="accent" (click)="onReleasedClickedByAdmin(); cd.restart()"><mat-icon>pan_tool</mat-icon></button>
+    <!-- <button mat-fab color="accent" (click)="onReleasedClickedByAdmin()"><mat-icon>pan_tool</mat-icon></button> -->
     <!-- <button mat-fab color="accent" mat-raised-button (click)="cd.resume()"><mat-icon>play_circle_outline</mat-icon></button>
     <button mat-raised-button color="accent" (click)="cd.restart()"><mat-icon>pause_circle_outline</mat-icon></button> -->
       <!-- <button mat-raised-button (click)=stopClickListenerTimer() >stop click listener timer</button> -->
@@ -57,8 +59,9 @@
 </div>
 
 
+<!-- <div [className]="animationClass">test</div> -->
 
+ <app-board></app-board>
 
-<app-board></app-board>
 
 
