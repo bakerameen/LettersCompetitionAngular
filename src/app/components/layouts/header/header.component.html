@@ -15,8 +15,10 @@
     <li *ngIf="!userIsAuthenticated" class="loginBtn"><a mat-button routerLink="/login" routerLinkActive="mat-accent">تسجيل الدخول</a></li>
     <li *ngIf="userIsAuthenticated && userName === 'Admin'"><a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign up</a></li>
     <li *ngIf="userIsAuthenticated && userName === 'Admin'"><a mat-button routerLink="/boardUpdate" routerLinkActive="mat-accent">Board</a></li>
-    <li *ngIf="userIsAuthenticated" (click)="onLogout()"><button mat-button >Logout</button></li>
+    <li *ngIf="userIsAuthenticated" (click)="onLogout()" ><button mat-button >Logout</button></li>
   </ul>
+
+  <img src="/../../assets/images/Naseej-2.png" class="naseejLogo">
 </mat-toolbar>
 
 

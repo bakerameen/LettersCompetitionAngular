@@ -100,7 +100,7 @@ export class AuthService {
 
     this.tokenTimer = setTimeout(() => {
       this.logOut();
-    }, duration * 1000)
+    }, duration * 1000);
   }
 
 
@@ -148,6 +148,7 @@ export class AuthService {
   }
 
   logOut() {
+    this.router.navigate(['/login']);
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
@@ -155,7 +156,7 @@ export class AuthService {
     this.userId = null;
     this.userName = null;
     this.clearAuthdata();
-    this.router.navigate(["/"]);
+
   }
 
 

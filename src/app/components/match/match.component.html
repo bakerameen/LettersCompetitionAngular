@@ -35,7 +35,8 @@
   <div >
 
     <div class="palyers text-right">
-      <p >  {{match.fPlayer}} -   {{match.sPlayer}}</p>
+      <p > <img src="/../../assets/images/user1.png" class="avatar"> {{match.fPlayer}}
+        <img src="/../../assets/images/user1.png" class="avatar">  {{match.sPlayer}}</p>
       <!-- <p >  {{match.fPlayer}} -   {{match.sPlayer}} - {{match.tPlayer}} - {{match.foPlayer}}</p> -->
 <p *ngIf="userName === 'Admin'">
       <input [(ngModel)]="scoreVal" class="updateScoreInput" >
@@ -51,7 +52,7 @@
 <!-- ngIf Admin-->
 <div class="adminAction" *ngIf="userName === 'Admin'">
   <div class="">
-    <!-- <button mat-fab color="accent" (click)="onReleasedClickedByAdmin()"><mat-icon>pan_tool</mat-icon></button> -->
+   <button mat-fab color="accent" (click)="onReleasedClickedByAdmin()"><mat-icon>pan_tool</mat-icon></button>
     <!-- <button mat-fab color="accent" mat-raised-button (click)="cd.resume()"><mat-icon>play_circle_outline</mat-icon></button>
     <button mat-raised-button color="accent" (click)="cd.restart()"><mat-icon>pause_circle_outline</mat-icon></button> -->
       <!-- <button mat-raised-button (click)=stopClickListenerTimer() >stop click listener timer</button> -->
